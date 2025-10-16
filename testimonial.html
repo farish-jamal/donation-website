@@ -124,11 +124,10 @@
               </div>
               <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
-            <a
-              href=""
-              class="btn btn-primary py-2 px-4 d-none d-xl-inline-block"
-              >Donate</a
-            >
+            <div class="d-flex gap-2 ms-3 mb-3">
+              <a href="donation.html" class="btn btn-primary py-2 px-4">Donate</a>
+              <button class="btn btn-outline-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#joinUsModal">Join Us</button>
+            </div>
           </div>
         </nav>
       </div>
@@ -334,7 +333,7 @@
                 consequat duis aute irure dolor in reprehenderit in voluptate
                 velit esse cillum dolore.
               </p>
-              <a href="" class="btn btn-primary py-2 px-4">Donate Now</a>
+              <a href="donation.html" class="btn btn-primary py-2 px-4">Donate Now</a>
             </div>
           </div>
           <div class="col-md-6 col-lg-6 col-xl-3">
@@ -362,29 +361,26 @@
             <div class="footer-item mt-5">
               <h4 class="text-light mb-4">Explore Link</h4>
               <div class="d-flex flex-column align-items-start">
-                <a class="text-body mb-2" href=""
+                <a class="text-body mb-2" href="index.html"
                   ><i class="fa fa-check text-primary me-2"></i>Home</a
                 >
-                <a class="text-body mb-2" href=""
+                <a class="text-body mb-2" href="about.html"
                   ><i class="fa fa-check text-primary me-2"></i>About Us</a
                 >
-                <a class="text-body mb-2" href=""
-                  ><i class="fa fa-check text-primary me-2"></i>Our Features</a
+                <a class="text-body mb-2" href="activity.html"
+                  ><i class="fa fa-check text-primary me-2"></i>Activities</a
                 >
-                <a class="text-body mb-2" href=""
+                <a class="text-body mb-2" href="contact.html"
                   ><i class="fa fa-check text-primary me-2"></i>Contact us</a
                 >
-                <a class="text-body mb-2" href=""
+                <a class="text-body mb-2" href="blog.html"
                   ><i class="fa fa-check text-primary me-2"></i>Our Blog</a
                 >
-                <a class="text-body mb-2" href=""
+                <a class="text-body mb-2" href="event.html"
                   ><i class="fa fa-check text-primary me-2"></i>Our Events</a
                 >
-                <a class="text-body mb-2" href=""
+                <a class="text-body mb-2" href="donation.html"
                   ><i class="fa fa-check text-primary me-2"></i>Donations</a
-                >
-                <a class="text-body mb-2" href=""
-                  ><i class="fa fa-check text-primary me-2"></i>Sermons</a
                 >
               </div>
             </div>
@@ -440,6 +436,43 @@
     </div>
     <!-- Footer End -->
 
+    <!-- Join Us Modal -->
+    <div class="modal fade" id="joinUsModal" tabindex="-1" aria-labelledby="joinUsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <h5 class="modal-title text-dark" id="joinUsModalLabel"><i class="fa fa-users me-2"></i>Join Our Community</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <p class="text-muted mb-4">Become a part of All India Sabile Hussain Trust and help us make a difference in the community.</p>
+            <form id="joinUsForm">
+              <div class="mb-3">
+                <label for="joinName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="joinName" placeholder="Enter your full name" required>
+              </div>
+              <div class="mb-3">
+                <label for="joinEmail" class="form-label">Email Address <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="joinEmail" placeholder="Enter your email" required>
+              </div>
+              <div class="mb-3">
+                <label for="joinPhone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="joinPhone" placeholder="Enter your phone number" required>
+              </div>
+              <div class="mb-3">
+                <label for="joinMessage" class="form-label">Message (Optional)</label>
+                <textarea class="form-control" id="joinMessage" rows="3" placeholder="Tell us why you want to join..."></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="submitJoinForm()"><i class="fa fa-paper-plane me-2"></i>Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-light back-to-top"
       ><i class="fa fa-arrow-up"></i
@@ -455,5 +488,52 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
+    <script>
+      // Handle Join Us form submission
+      function submitJoinForm() {
+        const name = document.getElementById('joinName').value.trim();
+        const email = document.getElementById('joinEmail').value.trim();
+        const phone = document.getElementById('joinPhone').value.trim();
+        const message = document.getElementById('joinMessage').value.trim();
+
+        // Basic validation
+        if (!name || !email || !phone) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+
+        // Phone validation (basic)
+        const phonePattern = /^[0-9+\-\s()]{10,}$/;
+        if (!phonePattern.test(phone)) {
+          alert('Please enter a valid phone number.');
+          return;
+        }
+
+        // Here you would typically send this data to your server
+        console.log('Join Us Form Data:', { name, email, phone, message });
+
+        // Show success message
+        alert('Thank you for joining us, ' + name + '! We will contact you soon.');
+
+        // Reset form and close modal
+        document.getElementById('joinUsForm').reset();
+        var modal = bootstrap.Modal.getInstance(document.getElementById('joinUsModal'));
+        modal.hide();
+      }
+
+      // Allow form submission on Enter key
+      document.getElementById('joinUsForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitJoinForm();
+      });
+    </script>
   </body>
 </html>
