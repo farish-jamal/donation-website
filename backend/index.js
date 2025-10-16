@@ -10,16 +10,20 @@ const Blog = require("./models/blog");
 const Event = require("./models/event");
 const { storage, fileFilter } = require("./config/multer/index");
 const { uploadSingleFile } = require("./utils/upload_single/index");
+const connectDB = require("./config/db");
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+(async () => {
+  await connectDB();
+})();
 
 // Configure multer
 const upload = multer({ storage, fileFilter });
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
@@ -147,6 +151,7 @@ app.post("/api/member/create-member", async (req, res) => {
 app.get("/api/member/get-all-members", async (req, res) => {
   const members = await Member.find();
   res.status(200).json({
+    members,
     success: true,
     message: "Members fetched successfully",
   });
@@ -161,7 +166,7 @@ app.post(
   ]),
   async (req, res) => {
     try {
-      const { title, content, tags, postBy } = req.body;
+      const { title, content, tags, postBy='admin' } = req.body;
 
       // Upload image to Cloudinary if provided
       let imageUrl = "";
