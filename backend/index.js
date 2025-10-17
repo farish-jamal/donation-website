@@ -11,6 +11,7 @@ const Event = require("./models/event");
 const { storage, fileFilter } = require("./config/multer/index");
 const { uploadSingleFile } = require("./utils/upload_single/index");
 const connectDB = require("./config/db");
+const Gallery = require("./models/gallery");
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -186,7 +187,7 @@ app.post(
   ]),
   async (req, res) => {
     try {
-      const { title, content, tags, postBy='admin' } = req.body;
+      const { title, content, tags, postBy = "admin" } = req.body;
 
       // Upload image to Cloudinary if provided
       let imageUrl = "";
@@ -419,6 +420,57 @@ app.patch(
         success: true,
         message: "Event updated successfully",
         event,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+);
+
+// Gallery Routes
+
+app.get("/api/gallery/get-all-gallery-items", async (req, res) => {
+  const galleryItems = await Gallery.find();
+  res.status(200).json({
+    success: true,
+    message: "Gallery items fetched successfully",
+    galleryItems,
+  });
+});
+
+app.delete("/api/gallery/delete-gallery-item/:id", async (req, res) => {
+  const { id } = req.params;
+  const galleryItem = await Gallery.findByIdAndDelete(id);
+  res.status(200).json({
+    success: true,
+    message: "Gallery item deleted successfully",
+  });
+});
+
+app.post(
+  "/api/gallery/create-gallery-item",
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const { title } = req.body;
+
+      let imageUrl = "";
+      if (req.file) {
+        imageUrl = await uploadSingleFile(req.file.path, "gallery");
+      }
+
+      const galleryItem = await Gallery.create({
+        title,
+        image: imageUrl,
+      });
+
+      res.status(201).json({
+        success: true,
+        message: "Gallery item created successfully",
+        galleryItem,
       });
     } catch (error) {
       res.status(500).json({
