@@ -23,9 +23,9 @@ const app = express();
 // Configure multer
 const upload = multer({ storage, fileFilter });
 
+app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
 // All Admin Routes
 app.post("/api/admin/register", async (req, res) => {
@@ -78,7 +78,7 @@ app.delete("/api/admin/delete-admin/:id", async (req, res) => {
   });
 });
 
-app.put("/api/admin/update-admin/:id", async (req, res) => {
+app.patch("/api/admin/update-admin/:id", async (req, res) => {
   const { id } = req.params;
   const { name, email, phoneNumber, password } = req.body;
   const admin = await Admin.findByIdAndUpdate(id, {
@@ -224,7 +224,7 @@ app.delete("/api/blog/delete-blog/:id", async (req, res) => {
   });
 });
 
-app.put(
+app.patch(
   "/api/blog/update-blog/:id",
   upload.fields([
     { name: "image", maxCount: 1 },
@@ -340,7 +340,7 @@ app.delete("/api/event/delete-event/:id", async (req, res) => {
   });
 });
 
-app.put(
+app.patch(
   "/api/event/update-event/:id",
   upload.single("image"),
   async (req, res) => {
