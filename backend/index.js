@@ -69,6 +69,16 @@ app.get("/api/admin/get-all-admins", async (req, res) => {
   });
 });
 
+app.get("/api/admin/get-admin/:id", async (req, res) => {
+  const { id } = req.params;
+  const admin = await Admin.findById(id);
+  res.status(200).json({
+    success: true,
+    message: "Admin fetched successfully",
+    admin,
+  });
+});
+
 app.delete("/api/admin/delete-admin/:id", async (req, res) => {
   const { id } = req.params;
   const admin = await Admin.findByIdAndDelete(id);
@@ -126,6 +136,16 @@ app.post("/api/donation/create-donation", async (req, res) => {
   res.status(201).json({
     success: true,
     message: "Donation created successfully",
+  });
+});
+
+app.get("/api/donation/get-donation/:id", async (req, res) => {
+  const { id } = req.params;
+  const donation = await Donation.findById(id);
+  res.status(200).json({
+    success: true,
+    message: "Donation fetched successfully",
+    donation,
   });
 });
 
@@ -221,6 +241,16 @@ app.delete("/api/blog/delete-blog/:id", async (req, res) => {
   res.status(200).json({
     success: true,
     message: "Blog deleted successfully",
+  });
+});
+
+app.get("/api/blog/get-blog/:id", async (req, res) => {
+  const { id } = req.params;
+  const blog = await Blog.findById(id);
+  res.status(200).json({
+    success: true,
+    message: "Blog fetched successfully",
+    blog,
   });
 });
 
@@ -337,6 +367,16 @@ app.delete("/api/event/delete-event/:id", async (req, res) => {
   res.status(200).json({
     success: true,
     message: "Event deleted successfully",
+  });
+});
+
+app.get("/api/event/get-event/:id", async (req, res) => {
+  const { id } = req.params;
+  const event = await Event.findById(id);
+  res.status(200).json({
+    success: true,
+    message: "Event fetched successfully",
+    event,
   });
 });
 
