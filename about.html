@@ -805,7 +805,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="submitJoinForm()"><i class="fa fa-paper-plane me-2"></i>Submit</button>
+            <button type="button" class="btn btn-primary" onclick="submitJoinForm(event)"><i class="fa fa-paper-plane me-2"></i>Submit</button>
           </div>
         </div>
       </div>
@@ -824,6 +824,7 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
+    <script src="js/config.js"></script>
     <script src="js/main.js"></script>
     <script>
       // Minimal cookie helpers
@@ -897,51 +898,5 @@
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     
-    <script>
-      // Handle Join Us form submission
-      function submitJoinForm() {
-        const name = document.getElementById('joinName').value.trim();
-        const email = document.getElementById('joinEmail').value.trim();
-        const phone = document.getElementById('joinPhone').value.trim();
-        const message = document.getElementById('joinMessage').value.trim();
-
-        // Basic validation
-        if (!name || !email || !phone) {
-          alert('Please fill in all required fields.');
-          return;
-        }
-
-        // Email validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-          alert('Please enter a valid email address.');
-          return;
-        }
-
-        // Phone validation (basic)
-        const phonePattern = /^[0-9+\-\s()]{10,}$/;
-        if (!phonePattern.test(phone)) {
-          alert('Please enter a valid phone number.');
-          return;
-        }
-
-        // Here you would typically send this data to your server
-        console.log('Join Us Form Data:', { name, email, phone, message });
-
-        // Show success message
-        alert('Thank you for joining us, ' + name + '! We will contact you soon.');
-
-        // Reset form and close modal
-        document.getElementById('joinUsForm').reset();
-        var modal = bootstrap.Modal.getInstance(document.getElementById('joinUsModal'));
-        modal.hide();
-      }
-
-      // Allow form submission on Enter key
-      document.getElementById('joinUsForm')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        submitJoinForm();
-      });
-    </script>
   </body>
 </html>

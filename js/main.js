@@ -306,3 +306,103 @@
 
 })(jQuery);
 
+// Handle Join Us form submission
+function submitJoinForm(event) {
+    const name = document.getElementById('joinName').value.trim();
+    const email = document.getElementById('joinEmail').value.trim();
+    const phone = document.getElementById('joinPhone').value.trim();
+    const message = document.getElementById('joinMessage').value.trim();
+
+    // Basic validation
+    if (!name || !email || !phone) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Phone validation (basic)
+    const phonePattern = /^[0-9+\-\s()]{10,}$/;
+    if (!phonePattern.test(phone)) {
+        alert('Please enter a valid phone number.');
+        return;
+    }
+
+    // Prepare data for API
+    const formData = {
+        name: name,
+        email: email,
+        phoneNumber: phone,
+        message: message
+    };
+
+    // Get API URL from config
+    const apiUrl = getApiUrl(API_CONFIG.ENDPOINTS.MEMBER);
+
+    // Show loading state (find the submit button)
+    const submitBtn = event ? event.target : document.querySelector('#joinUsModal .btn-primary[onclick*="submitJoinForm"]');
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin me-2"></i>Submitting...';
+    }
+
+    // Send data to server
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to submit form');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Show success message
+            alert('Thank you for joining us, ' + name + '! We will contact you soon.');
+
+            // Reset form and close modal
+            document.getElementById('joinUsForm').reset();
+            var modal = bootstrap.Modal.getInstance(document.getElementById('joinUsModal'));
+            if (modal) {
+                modal.hide();
+            }
+        } else {
+            throw new Error(data.message || 'Failed to submit form');
+        }
+    })
+    .catch(error => {
+        console.error('Error submitting form:', error);
+        alert('Sorry, there was an error submitting your form. Please try again later.');
+    })
+    .finally(() => {
+        // Restore button state
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
+    });
+}
+
+// Allow form submission on Enter key
+document.addEventListener('DOMContentLoaded', function() {
+    const joinUsForm = document.getElementById('joinUsForm');
+    if (joinUsForm) {
+        joinUsForm.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                submitJoinForm();
+            }
+        });
+    }
+});
