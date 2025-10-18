@@ -241,366 +241,29 @@
                 <h1 class="display-3">Our Photo Collection</h1>
             </div>
 
-            <div class="row g-4">
-                <!-- Gallery Item 1 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(0)">
-                        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=500&h=500&fit=crop" alt="Community Service" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Community Service</h5>
-                        </div>
-                    </div>
+            <!-- Loading State -->
+            <div id="gallery-loading" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-3 text-muted">Loading gallery...</p>
                 </div>
 
-                <!-- Gallery Item 2 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(1)">
-                        <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=500&h=500&fit=crop" alt="Charity Event" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Charity Event</h5>
-                        </div>
-                    </div>
+            <!-- Error State -->
+            <div id="gallery-error" class="alert alert-danger text-center" style="display: none;">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <span id="error-message">Failed to load gallery items. Please try again later.</span>
                 </div>
 
-                <!-- Gallery Item 3 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(2)">
-                        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=500&h=500&fit=crop" alt="Ramadan Gathering" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Ramadan Gathering</h5>
-                        </div>
-                    </div>
+            <!-- Empty State -->
+            <div id="gallery-empty" class="text-center py-5" style="display: none;">
+                <i class="fas fa-images text-muted" style="font-size: 4rem;"></i>
+                <p class="mt-3 text-muted fs-5">No gallery items available yet.</p>
                 </div>
 
-                <!-- Gallery Item 4 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(3)">
-                        <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=500&h=500&fit=crop" alt="Quran Study" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Quran Study Session</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 5 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(4)">
-                        <img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=500&h=500&fit=crop" alt="Food Distribution" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Food Distribution</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 6 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(5)">
-                        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=500&h=500&fit=crop" alt="Education Program" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Education Program</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 7 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(6)">
-                        <img src="https://images.unsplash.com/photo-1576280802061-dc99e4a6c58f?w=500&h=500&fit=crop" alt="Community Iftar" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Community Iftar</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 8 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(7)">
-                        <img src="https://images.unsplash.com/photo-1544306094-e2dcf9479da3?w=500&h=500&fit=crop" alt="Children Learning" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Children Learning</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 9 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(8)">
-                        <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=500&h=500&fit=crop" alt="Prayer Gathering" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Prayer Gathering</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 10 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(9)">
-                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=500&fit=crop" alt="Volunteer Work" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Volunteer Work</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 11 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(10)">
-                        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=500&h=500&fit=crop" alt="Islamic Lecture" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Islamic Lecture</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 12 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(11)">
-                        <img src="https://images.unsplash.com/photo-1547941126-3d5322b218b0?w=500&h=500&fit=crop" alt="Youth Program" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Youth Program</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 13 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(12)">
-                        <img src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=500&h=500&fit=crop" alt="Medical Camp" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Medical Camp</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 14 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(13)">
-                        <img src="https://images.unsplash.com/photo-1509099863731-ef4bff19e808?w=500&h=500&fit=crop" alt="Eid Celebration" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Eid Celebration</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 15 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(14)">
-                        <img src="https://images.unsplash.com/photo-1603399587513-136aa9398f2d?w=500&h=500&fit=crop" alt="Orphan Support" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Orphan Support</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 16 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(15)">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=500&fit=crop" alt="Women's Program" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Women's Program</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 17 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(16)">
-                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=500&h=500&fit=crop" alt="Clean Water Initiative" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Clean Water Initiative</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 18 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(17)">
-                        <img src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=500&h=500&fit=crop" alt="Book Distribution" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Book Distribution</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 19 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(18)">
-                        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=500&h=500&fit=crop" alt="Community Meeting" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Community Meeting</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 20 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(19)">
-                        <img src="https://images.unsplash.com/photo-1522661067900-ab829854a57f?w=500&h=500&fit=crop" alt="Qurbani Distribution" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Qurbani Distribution</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 21 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(20)">
-                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500&h=500&fit=crop" alt="Skill Training" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Skill Training</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 22 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(21)">
-                        <img src="https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=500&h=500&fit=crop" alt="Zakat Collection" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Zakat Collection</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 23 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(22)">
-                        <img src="https://images.unsplash.com/photo-1559113315-63d1d4ebc6eb?w=500&h=500&fit=crop" alt="Friday Prayer" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Friday Prayer</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 24 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(23)">
-                        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=500&h=500&fit=crop" alt="Hadith Study Circle" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Hadith Study Circle</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 25 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(24)">
-                        <img src="https://images.unsplash.com/photo-1576280802061-dc99e4a6c58f?w=500&h=500&fit=crop" alt="Ramadan Night" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Ramadan Night</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 26 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(25)">
-                        <img src="https://images.unsplash.com/photo-1591035897819-f4bdf739f446?w=500&h=500&fit=crop" alt="Islamic Art Workshop" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Islamic Art Workshop</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 27 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(26)">
-                        <img src="https://images.unsplash.com/photo-1578643463396-0997cb5328c1?w=500&h=500&fit=crop" alt="Elder Care" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Elder Care Program</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 28 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(27)">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=500&fit=crop" alt="Sisters Halaqa" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Sisters Halaqa</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 29 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(28)">
-                        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=500&h=500&fit=crop" alt="Arabic Classes" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Arabic Classes</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 30 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(29)">
-                        <img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=500&h=500&fit=crop" alt="Sadaqah Drive" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Sadaqah Drive</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 31 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(30)">
-                        <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=500&h=500&fit=crop" alt="Tafsir Session" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Tafsir Session</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 32 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(31)">
-                        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=500&h=500&fit=crop" alt="Laylatul Qadr" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Laylatul Qadr</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 33 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="gallery-item" onclick="openLightbox(32)">
-                        <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=500&h=500&fit=crop" alt="Humanitarian Aid" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Humanitarian Aid</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 34 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="gallery-item" onclick="openLightbox(33)">
-                        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=500&h=500&fit=crop" alt="Community Unity" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Community Unity</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 35 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="gallery-item" onclick="openLightbox(34)">
-                        <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=500&h=500&fit=crop" alt="Brotherhood" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Islamic Brotherhood</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 36 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="gallery-item" onclick="openLightbox(35)">
-                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=500&fit=crop" alt="Faith in Action" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <h5>Faith in Action</h5>
-                        </div>
-                    </div>
-                </div>
+            <!-- Gallery Grid -->
+            <div id="gallery-grid" class="row g-4" style="display: none;">
+                <!-- Gallery items will be dynamically inserted here -->
             </div>
         </div>
     </div>
@@ -741,17 +404,102 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <!-- Lightbox JavaScript -->
+    <!-- Gallery API Integration & Lightbox JavaScript -->
     <script>
+        // API Configuration
+        const API_BASE_URL = 'https://donation-website-s9mi.onrender.com';
+        const GALLERY_API_URL = `${API_BASE_URL}/api/gallery/get-all-gallery-items`;
+
+        // State
+        let galleryItems = [];
         let currentImageIndex = 0;
-        const images = document.querySelectorAll('.gallery-item img');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
+        // Fetch gallery items from API
+        async function fetchGalleryItems() {
+            const galleryLoading = document.getElementById('gallery-loading');
+            const galleryError = document.getElementById('gallery-error');
+            const galleryEmpty = document.getElementById('gallery-empty');
+            const galleryGrid = document.getElementById('gallery-grid');
+
+            try {
+                // Show loading state
+                galleryLoading.style.display = 'block';
+                galleryError.style.display = 'none';
+                galleryEmpty.style.display = 'none';
+                galleryGrid.style.display = 'none';
+
+                const response = await fetch(GALLERY_API_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.success && data.galleryItems && data.galleryItems.length > 0) {
+                    galleryItems = data.galleryItems;
+                    renderGallery(galleryItems);
+                    
+                    // Hide loading, show gallery
+                    galleryLoading.style.display = 'none';
+                    galleryGrid.style.display = 'flex';
+                } else {
+                    // No items found
+                    galleryLoading.style.display = 'none';
+                    galleryEmpty.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error fetching gallery items:', error);
+                
+                // Show error state
+                galleryLoading.style.display = 'none';
+                galleryError.style.display = 'block';
+                document.getElementById('error-message').textContent = 
+                    'Failed to load gallery items. Please ensure the backend server is running.';
+            }
+        }
+
+        // Render gallery items
+        function renderGallery(items) {
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.innerHTML = '';
+
+            items.forEach((item, index) => {
+                const delayIndex = (index % 4) + 1;
+                const delay = delayIndex * 0.1;
+
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col-md-6 col-lg-4 col-xl-3 wow fadeIn';
+                colDiv.setAttribute('data-wow-delay', `${delay}s`);
+
+                colDiv.innerHTML = `
+                    <div class="gallery-item" onclick="openLightbox(${index})">
+                        <img src="${item.image}" alt="${item.title}" class="img-fluid" onerror="this.src='https://via.placeholder.com/500x500?text=Image+Not+Found'">
+                        <div class="gallery-overlay">
+                            <h5>${item.title}</h5>
+                        </div>
+                    </div>
+                `;
+
+                galleryGrid.appendChild(colDiv);
+            });
+
+            // Reinitialize WOW.js for new elements
+            if (typeof WOW !== 'undefined') {
+                new WOW().init();
+            }
+        }
+
+        // Lightbox functions
         function openLightbox(index) {
+            if (galleryItems.length === 0) return;
+            
             currentImageIndex = index;
             lightbox.classList.add('active');
-            lightboxImg.src = images[index].src;
+            lightboxImg.src = galleryItems[index].image;
+            lightboxImg.alt = galleryItems[index].title;
             document.body.style.overflow = 'hidden';
         }
 
@@ -761,18 +509,21 @@
         }
 
         function changeImage(direction) {
+            if (galleryItems.length === 0) return;
+
             currentImageIndex += direction;
-            if (currentImageIndex >= images.length) {
+            if (currentImageIndex >= galleryItems.length) {
                 currentImageIndex = 0;
             } else if (currentImageIndex < 0) {
-                currentImageIndex = images.length - 1;
+                currentImageIndex = galleryItems.length - 1;
             }
-            lightboxImg.src = images[currentImageIndex].src;
+            lightboxImg.src = galleryItems[currentImageIndex].image;
+            lightboxImg.alt = galleryItems[currentImageIndex].title;
         }
 
         // Close lightbox on Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
                 closeLightbox();
             }
         });
@@ -793,6 +544,11 @@
             if (e.target === lightbox) {
                 closeLightbox();
             }
+        });
+
+        // Fetch gallery items when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchGalleryItems();
         });
     </script>
 
