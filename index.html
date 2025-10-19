@@ -1,110 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>All India Sabile Hussain Trust</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
-    <head>
-        <meta charset="utf-8">
-        <title>All India Sabile Hussain Trust</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
 
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
-        <!-- Icon Font Stylesheet -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
-        <!-- Libraries Stylesheet -->
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
 
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
 
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
+    <style>
+      /* Compact gadget */
+      #google_translate_element .goog-te-gadget-simple {
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        padding: 6px 10px;
+        background: #fff;
+      } /* UI styling for the inline gadget container. [web:23] */
+      .goog-te-gadget-icon {
+        display: none;
+      } /* Hide the small G icon. [web:23] */
 
-        
-        <style>
-            /* Compact gadget */
-            #google_translate_element .goog-te-gadget-simple {
-              border: 1px solid #e5e7eb; border-radius: 6px; padding: 6px 10px; background: #fff;
-            } /* UI styling for the inline gadget container. [web:23] */
-            .goog-te-gadget-icon { display: none; } /* Hide the small G icon. [web:23] */
-      
-            /* Prevent layout jump and hide top banner/tooltip */
-            .goog-te-banner-frame.skiptranslate { display: none !important; } /* Hide the banner iframe. [web:25] */
-            body { top: 0 !important; position: static !important; } /* Neutralize body top offset. [web:25] */
-      
-            /* Optional compact scale */
-            #google_translate_element .goog-te-gadget-simple { zoom: 0.85; } /* Scale down the widget. [web:23] */
-      
-            /* Optional: hide the popup tooltip class Google injects */
-            .VIpgJd-ZVi9od-ORHb-OEVmcd { display: none !important; } /* Hide tooltip overlay. [web:25] */
-          </style>
-    </head>
+      /* Prevent layout jump and hide top banner/tooltip */
+      .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+      } /* Hide the banner iframe. [web:25] */
+      body {
+        top: 0 !important;
+        position: static !important;
+      } /* Neutralize body top offset. [web:25] */
 
-    <body>
+      /* Optional compact scale */
+      #google_translate_element .goog-te-gadget-simple {
+        zoom: 0.85;
+      } /* Scale down the widget. [web:23] */
 
-        <!-- Spinner Start -->
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" role="status"></div>
-        </div>
-        <!-- Spinner End -->
+      /* Optional: hide the popup tooltip class Google injects */
+      .VIpgJd-ZVi9od-ORHb-OEVmcd {
+        display: none !important;
+      } /* Hide tooltip overlay. [web:25] */
+    </style>
+  </head>
 
+  <body>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
 
-        <!-- Topbar start -->
-        <div class="container-fluid fixed-top">
-            <div class="container topbar d-none d-lg-block">
-                <div class="topbar-inner">
-                    <div class="row gx-0">
-                        <div class="col-lg-7 text-start">
-                            <div class="h-100 d-inline-flex align-items-center me-4">
-                                <span class="fa fa-phone-alt me-2 text-dark"></span>
-                                <a href="#" class="text-secondary"><span>+91 8789833065</span></a>
-                            </div>
-                            <div class="h-100 d-inline-flex align-items-center">
-                                <span class="far fa-envelope me-2 text-dark"></span>
-                                <a href="#" class="text-secondary"><span>allindiasabilehussaintrust@gmail.com</span></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 text-end">
-                            <div class="h-100 d-inline-flex align-items-center">
-                                <span class="text-body">Follow Us:</span>
-                                <a class="text-dark px-2" href="https://www.facebook.com/share/1EvbRADkfR/
-                                " target="_blank"><i class="fab fa-facebook-f"></i> </a>
-                                <a class="text-dark px-2" href="https://x.com/Aisht1325?t=n2SRmREdn4L4CRDREElq2g&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a class="text-dark px-2" href="https://youtube.com/@aiaht2513?si=8YJjEdN1Jf-NH0eS" target="_blank"><i class="fab fa-youtube"></i></a>
-                                <a class="text-dark px-2" href="https://www.instagram.com/aisht2513?igsh=MTdibzg3amF4emg0Mw==" target="_blank"><i class="fab fa-instagram"></i></a>
-                              
-                                <div id="google_translate_element"></div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Topbar start -->
+    <div class="container-fluid fixed-top">
+      <div class="container topbar d-none d-lg-block">
+        <div class="topbar-inner">
+          <div class="row gx-0">
+            <div class="col-lg-7 text-start">
+              <div class="h-100 d-inline-flex align-items-center me-4">
+                <span class="fa fa-phone-alt me-2 text-dark"></span>
+                <a href="#" class="text-secondary"
+                  ><span>+91 8789833065</span></a
+                >
+              </div>
+              <div class="h-100 d-inline-flex align-items-center">
+                <span class="far fa-envelope me-2 text-dark"></span>
+                <a href="#" class="text-secondary"
+                  ><span>allindiasabilehussaintrust@gmail.com</span></a
+                >
+              </div>
             </div>
-            <div class="container">
-                <nav class="navbar navbar-light navbar-expand-lg py-3">
-                    <a href="index.html" class="navbar-brand">
-                        <img src="img/logo-1.png" alt="Logo" class="img-fluid" style="width: 70px; height: 70px;">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="fa fa-bars text-primary"></span>
-                    </button>
-                    <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-                        <div class="navbar-nav ms-lg-auto mx-xl-auto">
-                            <a href="index.html" class="nav-item nav-link active ">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="activity.html" class="nav-item nav-link">Activities</a>
-                            <a href="event.html" class="nav-item nav-link">Events</a>
-                            <a href="blog.html" class="nav-item nav-link">Latest Blog</a>
-                            <a href="gallery.html" class="nav-item nav-link">Gallery</a>
-                            <!-- <a href="sermon.html" class="nav-item nav-link">Sermons</a> -->
-                            <!-- <div class="nav-item dropdown">
+            <div class="col-lg-5 text-end">
+              <div class="h-100 d-inline-flex align-items-center">
+                <span class="text-body">Follow Us:</span>
+                <a
+                  class="text-dark px-2"
+                  href="https://www.facebook.com/share/1EvbRADkfR/
+                                "
+                  target="_blank"
+                  ><i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  class="text-dark px-2"
+                  href="https://x.com/Aisht1325?t=n2SRmREdn4L4CRDREElq2g&s=09"
+                  target="_blank"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a
+                  class="text-dark px-2"
+                  href="https://youtube.com/@aiaht2513?si=8YJjEdN1Jf-NH0eS"
+                  target="_blank"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+                <a
+                  class="text-dark px-2"
+                  href="https://www.instagram.com/aisht2513?igsh=MTdibzg3amF4emg0Mw=="
+                  target="_blank"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+
+                <div id="google_translate_element"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <nav class="navbar navbar-light navbar-expand-lg py-3">
+          <a href="index.html" class="navbar-brand">
+            <img
+              src="img/logo-1.png"
+              alt="Logo"
+              class="img-fluid"
+              style="width: 70px; height: 70px"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+          >
+            <span class="fa fa-bars text-primary"></span>
+          </button>
+          <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+            <div class="navbar-nav ms-lg-auto mx-xl-auto">
+              <a href="index.html" class="nav-item nav-link active">Home</a>
+              <a href="about.html" class="nav-item nav-link">About</a>
+              <a href="activity.html" class="nav-item nav-link">Activities</a>
+              <a href="event.html" class="nav-item nav-link">Events</a>
+              <a href="blog.html" class="nav-item nav-link">Latest Blog</a>
+              <a href="gallery.html" class="nav-item nav-link">Gallery</a>
+              <!-- <a href="sermon.html" class="nav-item nav-link">Sermons</a> -->
+              <!-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu m-0 rounded-0">
                                     <a href="blog.html" class="dropdown-item">Latest Blog</a>
@@ -113,18 +168,129 @@
                                     <a href="404.html" class="dropdown-item">404 Page</a>
                                 </div>
                             </div> -->
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        </div>
-                        <div class="d-flex gap-2 ms-3 mb-3">
-                            <a href="donation.html" class="btn btn-primary py-2 px-4">Donate</a>
-                            <button class="btn btn-outline-primary py-2 px-4" data-bs-toggle="modal" data-bs-target="#joinUsModal">Join Us</button>
-                        </div>
-                    </div>
-                </nav>
+              <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
+            <div class="d-flex gap-2 ms-3 mb-3">
+              <a href="donation.html" class="btn btn-primary py-2 px-4"
+                >Donate</a
+              >
+              <button
+                class="btn btn-outline-primary py-2 px-4"
+                data-bs-toggle="modal"
+                data-bs-target="#joinUsModal"
+              >
+                Join Us
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!-- Hero Carousel -->
+    <div
+      id="heroCarousel"
+      class="carousel slide hero-headers"
+      data-bs-ride="carousel"
+      data-bs-interval="5000"
+    >
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div
+            class="container-fluid hero-header-slide"
+            style="background-image: url('../img/hero.jpg')"
+          >
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-7">
+                  <div class="hero-header-inner animated zoomIn">
+                    <h5 class="fs-4 text-dark">
+                      Welcome to All India Sabile Hussain Trust
+                    </h5>
+                    <h1 class="display-1 mb-5 text-dark">
+                      Purity Comes From Faith
+                    </h1>
+                    <a
+                      href="donation.html"
+                      class="btn btn-primary py-3 px-5 me-3"
+                      >Donate</a
+                    >
+                    <button
+                      class="btn btn-outline-primary py-3 px-5"
+                      data-bs-toggle="modal"
+                      data-bs-target="#joinUsModal"
+                    >
+                      Join Us
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="container-fluid hero-header">
+        <div class="carousel-item">
+          <div
+            class="container-fluid hero-header-slide"
+            style="background-image: url('../img/ban2.jpeg')"
+          ></div>
+        </div>
+
+        <div class="carousel-item">
+          <div
+            class="container-fluid hero-header-slide"
+            style="background-image: url('../img/ban3.jpeg')"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+        aria-label="Previous"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+        aria-label="Next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- <div class="container-fluid hero-header">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7">
@@ -137,50 +303,88 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Hero End -->
+        </div> -->
+    <!-- Hero End -->
 
-
-        <!-- About Satrt -->
-        <div class="container-fluid about py-5">
-            <div class="container py-5">
-                <div class="row g-5 mb-5">
-                    <div class="col-xl-6">
-                        <div class="row g-4">
-                            <div class="col-6">
-                                <img src="img/about-1.jpg" class="img-fluid h-100 wow zoomIn" data-wow-delay="0.1s" alt="">
-                            </div>
-                            <div class="col-6">
-                                <img src="img/about-2.jpg" class="img-fluid pb-3 wow zoomIn" data-wow-delay="0.1s" alt="">
-                                <img src="img/about-3.jpg" class="img-fluid pt-3 wow zoomIn" data-wow-delay="0.1s" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 wow fadeIn" data-wow-delay="0.5s">
-                        <p class="fs-5 text-uppercase text-primary">About All India Sabile Hussain trust</p>
-                        <h1 class="display-5 pb-4 m-0">Allah Help Those Who Help Themselves</h1>
-                        <p class="pb-4">The vision of Sabile Hussain Trust is a world where no one sleeps hungry, no child is deprived of education, and no person in need is left without support.</p>
-                        <div class="row g-4 mb-4">
-                            <div class="col-md-6">
-                                <div class="ps-3 d-flex align-items-center justify-content-start">
-                                    <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-eye text-dark fa-4x mb-5 pb-2"></i></span>
-                                    <div class="ms-4">
-                                        <h5>Our Vision</h5>
-                                        <p>We envision a society where humanity, love, justice, and unity are the highest values.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="ps-3 d-flex align-items-center justify-content-start">
-                                    <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i></span>
-                                    <div class="ms-4">
-                                        <h5>Our Mission</h5>
-                                        <p>Our goal is to build an India where every heart is filled with empathy, every hand reaches out to help.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="bg-light p-3 mb-4">
+    <!-- About Satrt -->
+    <div class="container-fluid about py-5">
+      <div class="container py-5">
+        <div class="row g-5 mb-5">
+          <div class="col-xl-6">
+            <div class="row g-4">
+              <div class="col-6">
+                <img
+                  src="img/about-1.jpg"
+                  class="img-fluid h-100 wow zoomIn"
+                  data-wow-delay="0.1s"
+                  alt=""
+                />
+              </div>
+              <div class="col-6">
+                <img
+                  src="img/about-2.jpg"
+                  class="img-fluid pb-3 wow zoomIn"
+                  data-wow-delay="0.1s"
+                  alt=""
+                />
+                <img
+                  src="img/about-3.jpg"
+                  class="img-fluid pt-3 wow zoomIn"
+                  data-wow-delay="0.1s"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 wow fadeIn" data-wow-delay="0.5s">
+            <p class="fs-5 text-uppercase text-primary">
+              About All India Sabile Hussain trust
+            </p>
+            <h1 class="display-5 pb-4 m-0">
+              Allah Help Those Who Help Themselves
+            </h1>
+            <p class="pb-4">
+              The vision of Sabile Hussain Trust is a world where no one sleeps
+              hungry, no child is deprived of education, and no person in need
+              is left without support.
+            </p>
+            <div class="row g-4 mb-4">
+              <div class="col-md-6">
+                <div
+                  class="ps-3 d-flex align-items-center justify-content-start"
+                >
+                  <span
+                    class="bg-primary btn-md-square rounded-circle mt-4 me-2"
+                    ><i class="fa fa-eye text-dark fa-4x mb-5 pb-2"></i
+                  ></span>
+                  <div class="ms-4">
+                    <h5>Our Vision</h5>
+                    <p>
+                      We envision a society where humanity, love, justice, and
+                      unity are the highest values.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="ps-3 d-flex align-items-center justify-content-start"
+                >
+                  <span
+                    class="bg-primary btn-md-square rounded-circle mt-4 me-2"
+                    ><i class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i
+                  ></span>
+                  <div class="ms-4">
+                    <h5>Our Mission</h5>
+                    <p>
+                      Our goal is to build an India where every heart is filled
+                      with empathy, every hand reaches out to help.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="bg-light p-3 mb-4">
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-3">
                                     <img src="img/about-child.jpg" class="img-fluid rounded-circle" alt="">
@@ -194,155 +398,198 @@
                                 </div>
                             </div>
                         </div> -->
-                        <div class="row g-2">
-                            <div class="col-md-6">
-                                <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Charity & Donation</p>
-                                <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Quran Learning</p>
-                                <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Parent Education</p>
-                                <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Help Orphans</p>
-
-
-                            </div>
-                            <div class="col-md-6">
-                                <p class="mb-0"><i class="fa fa-check text-primary me-3"></i>Mosque Development</p>
-                                <p class="mb-2"><i class="fa fa-check text-primary me-3"></i>Hadith & Sunnah</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container text-center bg-primary py-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-2">
-                            <i class="fa fa-mosque fa-5x text-white"></i>
-                        </div>
-                        <div class="col-lg-7 text-center text-lg-start">
-                            <h1 class="mb-0">Every Muslim Needs To Realise The Importance Of The "Pillar" Of Islam</h1>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="donation.html" class="btn btn-light py-2 px-4">Donate Now</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="row g-2">
+              <div class="col-md-6">
+                <p class="mb-2">
+                  <i class="fa fa-check text-primary me-3"></i>Charity &
+                  Donation
+                </p>
+                <p class="mb-2">
+                  <i class="fa fa-check text-primary me-3"></i>Quran Learning
+                </p>
+                <p class="mb-2">
+                  <i class="fa fa-check text-primary me-3"></i>Parent Education
+                </p>
+                <p class="mb-2">
+                  <i class="fa fa-check text-primary me-3"></i>Help Orphans
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-0">
+                  <i class="fa fa-check text-primary me-3"></i>Mosque
+                  Development
+                </p>
+                <p class="mb-2">
+                  <i class="fa fa-check text-primary me-3"></i>Hadith & Sunnah
+                </p>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- About End -->
-
-
-        <!-- Activities Start -->
-        <div class="container-fluid activities py-5">
-            <div class="container py-5">
-                <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Activities</p>
-                    <h1 class="display-3">Here Are Our Activities</h1>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
-                            <i class="fa fa-mosque fa-4x text-dark"></i>
-                            <div class="ms-4">
-                                <h4>Mosque Development</h4>
-                                <p class="mb-4">Build Allah's house, earn eternal rewards through Sadaqah Jariyah.</p>
-                                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.3s">
-                            <i class="fa fa-donate fa-4x text-dark"></i>
-                            <div class="ms-4">
-                                <h4>Charity & Donation</h4>
-                                <p class="mb-4">Support charity and donate - earn blessings while helping those in need.</p>
-                                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.5s">
-                            <i class="fa fa-quran fa-4x text-dark"></i>
-                            <div class="ms-4">
-                                <h4>Quran Learning</h4>
-                                <p class="mb-4">Learn Quran online - proper recitation, tajweed, and memorization for all ages.</p>
-                                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
-                            <i class="fa fa-book fa-4x text-dark"></i>
-                            <div class="ms-4">
-                                <h4>Hadith & Sunnah</h4>
-                                <p class="mb-4">Study authentic Hadith and Sunnah - follow the Prophet's (ﷺ) blessed example.</p>
-                                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.3s">
-                            <i class="fa fa-book-open fa-4x text-dark"></i>
-                            <div class="ms-4">
-                                <h4>Parent Education</h4>
-                                <p class="mb-4">Raise righteous children - Islamic parenting guidance rooted in Quran and Sunnah.</p>
-                                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.5s">
-                            <i class="fa fa-hands fa-4x text-dark"></i>
-                            <div class="ms-4">
-                                <h4>Help Orphans</h4>
-                                <p class="mb-4">Support orphans - fulfill this blessed Sunnah and earn immense rewards.</p>
-                                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div
+          class="container text-center bg-primary py-5 wow fadeIn"
+          data-wow-delay="0.1s"
+        >
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-2">
+              <i class="fa fa-mosque fa-5x text-white"></i>
             </div>
-        </div>
-        <!-- Activities Start -->
-
-
-        <!-- Events Start -->
-        <div class="container-fluid event py-5">
-            <div class="container py-5">
-                <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Upcoming <span class="text-primary">Events</span></h1>
-                <div id="events-container">
-                    <!-- Events will be dynamically loaded here -->
-                    <div class="text-center py-5">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        <p class="mt-3">Loading events...</p>
-                    </div>
-                </div>
+            <div class="col-lg-7 text-center text-lg-start">
+              <h1 class="mb-0">
+                Every Muslim Needs To Realise The Importance Of The "Pillar" Of
+                Islam
+              </h1>
             </div>
-        </div>
-        <!-- Events End -->
-
-
-        <!-- Sermon Start -->
-        <div class="container-fluid sermon py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Sermons</p>
-                    <h1 class="display-3">Join The Islamic Community</h1>
-                </div>
-                <div class="row g-4 justify-content-center" id="blogs-container">
-                    <!-- Blogs will be loaded dynamically here -->
-                    <div class="col-12 text-center">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-3">
+              <a href="donation.html" class="btn btn-light py-2 px-4"
+                >Donate Now</a
+              >
             </div>
+          </div>
         </div>
-        <!-- Sermon End -->
+      </div>
+    </div>
+    <!-- About End -->
 
+    <!-- Activities Start -->
+    <div class="container-fluid activities py-5">
+      <div class="container py-5">
+        <div
+          class="mx-auto text-center mb-5 wow fadeIn"
+          data-wow-delay="0.1s"
+          style="max-width: 700px"
+        >
+          <p class="fs-5 text-uppercase text-primary">Activities</p>
+          <h1 class="display-3">Here Are Our Activities</h1>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-6 col-xl-4">
+            <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
+              <i class="fa fa-mosque fa-4x text-dark"></i>
+              <div class="ms-4">
+                <h4>Mosque Development</h4>
+                <p class="mb-4">
+                  Build Allah's house, earn eternal rewards through Sadaqah
+                  Jariyah.
+                </p>
+                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-4">
+            <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.3s">
+              <i class="fa fa-donate fa-4x text-dark"></i>
+              <div class="ms-4">
+                <h4>Charity & Donation</h4>
+                <p class="mb-4">
+                  Support charity and donate - earn blessings while helping
+                  those in need.
+                </p>
+                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-4">
+            <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.5s">
+              <i class="fa fa-quran fa-4x text-dark"></i>
+              <div class="ms-4">
+                <h4>Quran Learning</h4>
+                <p class="mb-4">
+                  Learn Quran online - proper recitation, tajweed, and
+                  memorization for all ages.
+                </p>
+                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-4">
+            <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
+              <i class="fa fa-book fa-4x text-dark"></i>
+              <div class="ms-4">
+                <h4>Hadith & Sunnah</h4>
+                <p class="mb-4">
+                  Study authentic Hadith and Sunnah - follow the Prophet's (ﷺ)
+                  blessed example.
+                </p>
+                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-4">
+            <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.3s">
+              <i class="fa fa-book-open fa-4x text-dark"></i>
+              <div class="ms-4">
+                <h4>Parent Education</h4>
+                <p class="mb-4">
+                  Raise righteous children - Islamic parenting guidance rooted
+                  in Quran and Sunnah.
+                </p>
+                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-4">
+            <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.5s">
+              <i class="fa fa-hands fa-4x text-dark"></i>
+              <div class="ms-4">
+                <h4>Help Orphans</h4>
+                <p class="mb-4">
+                  Support orphans - fulfill this blessed Sunnah and earn immense
+                  rewards.
+                </p>
+                <!-- <a href="" class="btn btn-primary px-3">Read More</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Activities Start -->
 
-        <!-- Blog Start -->
-        <!-- <div class="container-fluid py-5">
+    <!-- Events Start -->
+    <div class="container-fluid event py-5">
+      <div class="container py-5">
+        <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">
+          Upcoming <span class="text-primary">Events</span>
+        </h1>
+        <div id="events-container">
+          <!-- Events will be dynamically loaded here -->
+          <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3">Loading events...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Events End -->
+
+    <!-- Sermon Start -->
+    <div class="container-fluid sermon py-5">
+      <div class="container py-5">
+        <div
+          class="text-center mx-auto mb-5 wow fadeIn"
+          data-wow-delay="0.1s"
+          style="max-width: 700px"
+        >
+          <p class="fs-5 text-uppercase text-primary">Sermons</p>
+          <h1 class="display-3">Join The Islamic Community</h1>
+        </div>
+        <div class="row g-4 justify-content-center" id="blogs-container">
+          <!-- Blogs will be loaded dynamically here -->
+          <div class="col-12 text-center">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sermon End -->
+
+    <!-- Blog Start -->
+    <!-- <div class="container-fluid py-5">
             <div class="container py-5">
                 <h1 class="display-3 mb-5 wow fadeIn" data-wow-delay="0.1s">Latest From <span class="text-primary">Our Blog</span></h1>
                 <div class="row g-4 justify-content-center">
@@ -418,430 +665,596 @@
                 </div>
             </div>
         </div> -->
-        <!-- Blog End -->
+    <!-- Blog End -->
 
-
-        <!-- Team Start -->
-        <div class="container-fluid team py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Our Team</p>
-                    <h1 class="display-3">Meet Our Organizer</h1>
-                </div>
-                <div class="row g-5">
-                    <div class="col-lg-4 col-xl-5">
-                        <div class="team-img wow zoomIn" data-wow-delay="0.1s">
-                            <img src="img/persident.jpeg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-xl-7">
-                        <div class="team-item wow fadeIn" data-wow-delay="0.1s">
-                            <h1> Aarif Raza Qadri
-                            </h1>
-                            <h5 class="fw-normal fst-italic text-primary mb-4">President</h5>
-                            <p class="mb-4">The purpose of Sabile Hussain Trust is not just to serve, but to spread love, unity, and harmony through the service of humanity.
-                                We firmly believe that the world becomes a better place when human beings care for one another — regardless of religion, caste, or background.
-                                </p>
-                            <div class="team-icon d-flex pb-4 mb-4 border-bottom border-primary">
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-lg-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="btn btn-primary btn-lg-square me-2"><i class="fab fa-instagram"></i></a>
-                                <!-- <a href="#" class="btn btn-primary btn-lg-square"><i class="fab fa-linkedin-in"></i></a> -->
-                            </div>
-                        </div>
-                        <div class="row g-4">
-                            <div class="col-md-4">
-                                <div class="team-item wow zoomIn" data-wow-delay="0.2s">
-                                    <img src="img/founder.jpeg" class="img-fluid w-100" alt="">
-                                    <div class="team-content text-dark text-center py-3">
-                                        <div class="team-content-inner">
-                                            <h5 class="mb-0">MD SAJID
-                                            </h5>
-                                            <p class="text-dark">Founder</p>
-                                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square me-2"><i class="fab fa-instagram"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="team-item wow zoomIn" data-wow-delay="0.4s">
-                                    <img src="img/VP.jpeg" class="img-fluid w-100" alt="">
-                                    <div class="team-content text-dark text-center py-3">
-                                        <div class="team-content-inner">
-                                            <h5 class="mb-0">Latif Ansari</h5>
-                                            <p class="text-dark">Vice President</p>
-                                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square me-2"><i class="fab fa-instagram"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="team-item wow zoomIn" data-wow-delay="0.6s">
-                                    <img src="img/sec.jpeg" class="img-fluid w-100" alt="">
-                                    <div class="team-content text-dark text-center py-3">
-                                        <div class="team-content-inner">
-                                            <h5 class="mb-0">Rashid Madani 
-                                            </h5>
-                                            <p class="text-dark">Secretary</p>
-                                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                                <a class="btn btn-primary btn-sm-square me-2" href=""><i class="fab fa-twitter"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square me-2"><i class="fab fa-instagram"></i></a>
-                                                <a href="#" class="btn btn-primary btn-sm-square"><i class="fab fa-linkedin-in"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Team Start -->
+    <div class="container-fluid team py-5">
+      <div class="container py-5">
+        <div
+          class="text-center mx-auto mb-5 wow fadeIn"
+          data-wow-delay="0.1s"
+          style="max-width: 700px"
+        >
+          <p class="fs-5 text-uppercase text-primary">Our Team</p>
+          <h1 class="display-3">Meet Our Organizer</h1>
         </div>
-        <!-- Team End -->
-
-
-        <!-- Testiminial Start -->
-        <div class="container-fluid testimonial py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <p class="fs-5 text-uppercase text-primary">Testimonial</p>
-                    <h1 class="display-3">What People Say About Islam</h1>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.1s">
-                    <div class="testimonial-item">
-                        <div class="d-flex mb-3">
-                            <div class="position-relative">
-                                <img src="img/testimonial-1.jpg" class="img-fluid" alt="">
-                                <div class="btn-md-square bg-primary rounded-circle position-absolute" style="top: 25px; left: -25px;">
-                                    <i class="fa fa-quote-left text-dark"></i>
-                                </div>
-                            </div>
-                            <div class="ps-3 my-auto ">
-                                <h5 class="mb-0">Full Name</h5>
-                                <p class="m-0">Profession</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            <div class="d-flex">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                            </div>
-                            <p class="fs-5 m-0 pt-3">Lorem ipsum dolor sit amet elit, sed do tempor ut labore et dolore magna aliqua. Ut enim ad minim quis.</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="d-flex mb-3">
-                            <div class="position-relative">
-                                <img src="img/testimonial-2.jpg" class="img-fluid" alt="">
-                                <div class="btn-md-square bg-primary rounded-circle position-absolute" style="top: 25px; left: -25px;">
-                                    <i class="fa fa-quote-left text-dark"></i>
-                                </div>
-                            </div>
-                            <div class="ps-3 my-auto ">
-                                <h5 class="mb-0">Full Name</h5>
-                                <p class="m-0">Profession</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            <div class="d-flex">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                            </div>
-                            <p class="fs-5 m-0 pt-3">Lorem ipsum dolor sit amet elit, sed do tempor ut labore et dolore magna aliqua. Ut enim ad minim quis.</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="d-flex mb-3">
-                            <div class="position-relative">
-                                <img src="img/testimonial-3.jpg" class="img-fluid" alt="">
-                                <div class="btn-md-square bg-primary rounded-circle position-absolute" style="top: 25px; left: -25px;">
-                                    <i class="fa fa-quote-left text-dark"></i>
-                                </div>
-                            </div>
-                            <div class="ps-3 my-auto ">
-                                <h5 class="mb-0">Full Name</h5>
-                                <p class="m-0">Profession</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            <div class="d-flex">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                            </div>
-                            <p class="fs-5 m-0 pt-3">Lorem ipsum dolor sit amet elit, sed do tempor ut labore et dolore magna aliqua. Ut enim ad minim quis.</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="d-flex mb-3">
-                            <div class="position-relative">
-                                <img src="img/testimonial-4.jpg" class="img-fluid" alt="">
-                                <div class="btn-md-square bg-primary rounded-circle position-absolute" style="top: 25px; left: -25px;">
-                                    <i class="fa fa-quote-left text-dark"></i>
-                                </div>
-                            </div>
-                            <div class="ps-3 my-auto ">
-                                <h5 class="mb-0">Full Name</h5>
-                                <p class="m-0">Profession</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            <div class="d-flex">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                            </div>
-                            <p class="fs-5 m-0 pt-3">Lorem ipsum dolor sit amet elit, sed do tempor ut labore et dolore magna aliqua. Ut enim ad minim quis.</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="row g-5">
+          <div class="col-lg-4 col-xl-5">
+            <div class="team-img wow zoomIn" data-wow-delay="0.1s">
+              <img src="img/persident.jpeg" class="img-fluid" alt="" />
             </div>
+          </div>
+          <div class="col-lg-8 col-xl-7">
+            <div class="team-item wow fadeIn" data-wow-delay="0.1s">
+              <h1>Aarif Raza Qadri</h1>
+              <h5 class="fw-normal fst-italic text-primary mb-4">President</h5>
+              <p class="mb-4">
+                The purpose of Sabile Hussain Trust is not just to serve, but to
+                spread love, unity, and harmony through the service of humanity.
+                We firmly believe that the world becomes a better place when
+                human beings care for one another — regardless of religion,
+                caste, or background.
+              </p>
+              <div
+                class="team-icon d-flex pb-4 mb-4 border-bottom border-primary"
+              >
+                <a class="btn btn-primary btn-lg-square me-2" href=""
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a class="btn btn-primary btn-lg-square me-2" href=""
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" class="btn btn-primary btn-lg-square me-2"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <!-- <a href="#" class="btn btn-primary btn-lg-square"><i class="fab fa-linkedin-in"></i></a> -->
+              </div>
+            </div>
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="team-item wow zoomIn" data-wow-delay="0.2s">
+                  <img src="img/founder.jpeg" class="img-fluid w-100" alt="" />
+                  <div class="team-content text-dark text-center py-3">
+                    <div class="team-content-inner">
+                      <h5 class="mb-0">MD SAJID</h5>
+                      <p class="text-dark">Founder</p>
+                      <div
+                        class="team-icon d-flex align-items-center justify-content-center"
+                      >
+                        <a class="btn btn-primary btn-sm-square me-2" href=""
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                        <a class="btn btn-primary btn-sm-square me-2" href=""
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                        <a href="#" class="btn btn-primary btn-sm-square me-2"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="team-item wow zoomIn" data-wow-delay="0.4s">
+                  <img src="img/VP.jpeg" class="img-fluid w-100" alt="" />
+                  <div class="team-content text-dark text-center py-3">
+                    <div class="team-content-inner">
+                      <h5 class="mb-0">Latif Ansari</h5>
+                      <p class="text-dark">Vice President</p>
+                      <div
+                        class="team-icon d-flex align-items-center justify-content-center"
+                      >
+                        <a class="btn btn-primary btn-sm-square me-2" href=""
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                        <a class="btn btn-primary btn-sm-square me-2" href=""
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                        <a href="#" class="btn btn-primary btn-sm-square me-2"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="team-item wow zoomIn" data-wow-delay="0.6s">
+                  <img src="img/sec.jpeg" class="img-fluid w-100" alt="" />
+                  <div class="team-content text-dark text-center py-3">
+                    <div class="team-content-inner">
+                      <h5 class="mb-0">Rashid Madani</h5>
+                      <p class="text-dark">Secretary</p>
+                      <div
+                        class="team-icon d-flex align-items-center justify-content-center"
+                      >
+                        <a class="btn btn-primary btn-sm-square me-2" href=""
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                        <a class="btn btn-primary btn-sm-square me-2" href=""
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                        <a href="#" class="btn btn-primary btn-sm-square me-2"
+                          ><i class="fab fa-instagram"></i
+                        ></a>
+                        <a href="#" class="btn btn-primary btn-sm-square"
+                          ><i class="fab fa-linkedin-in"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Testiminial End -->
+      </div>
+    </div>
+    <!-- Team End -->
 
-
-        <!-- Footer Start -->
-        <div class="container-fluid footer pt-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <!-- <div class="row py-5">
-                    <div class="col-lg-7">
-                        <h1 class="text-light mb-0">Subscribe our newsletter</h1>
-                        <p class="text-secondary">Get the latest news and other tips</p>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="position-relative mx-auto">
-                            <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Subcribe</button>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="border-top border-secondary"></div>
-                    </div>
-                </div> -->
-                <div class="row g-4 footer-inner">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item mt-5">
-                            <!-- <h4 class="text-light mb-4">THE<span class="text-primary">Mosque</span></h4> -->
-                            <a href="index.html" class="navbar-brand">
-                                <img src="img/logo-1.png" alt="Logo" class="img-fluid" style="width: 100px; height: 100px;">
-                            </a>
-                            <p class="mb-4 text-secondary">The vision of Sabile Hussain Trust is a world where no one sleeps hungry, no child is deprived of education, and no person in need is left without support.</p>
-                              <a href="donation.html" class="btn btn-primary py-2 px-4">Donate Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item mt-5">
-                            <h4 class="text-light mb-4">Our Mosque</h4>
-                            <div class="d-flex flex-column">
-                                <h6 class="text-secondary mb-0">Our Address</h6>
-                                <div class="d-flex align-items-center border-bottom py-4">
-                                    <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i class="fa fa-map-marker-alt text-dark"></i></span>
-                                    <a href="https://www.google.com/maps/dir//Ara+More,+Matkuria+Rd,+near+Everyday+Market,+Karim+Gunj,+Wassepur,+Giridih,+Dhanbad,+Jharkhand+815301/@23.7966532,86.3277898,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x39f6a30b68379e9f:0xce9e175f70e50f7d!2m2!1d86.4102042!2d23.7966746?hl=en-IN&entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D" class="text-body" target="_blank">Ara More, Matkuria Rd, near Everyday Market, Karim Gunj, Wassepur, Giridih, Dhanbad, Jharkhand 815301
-                                    </a>
-                                </div>
-                                <h6 class="text-secondary mt-4 mb-0">Our Mobile</h6>
-                                <div class="d-flex align-items-center py-4">
-                                    <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"><i class="fa fa-phone-alt text-dark"></i></span>
-                                    <a href="" class="text-body">+91 87898330650</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item mt-5">
-                            <h4 class="text-light mb-4">Explore Link</h4>
-                            <div class="d-flex flex-column align-items-start">
-                                <a class="text-body mb-2" href="index.html"><i class="fa fa-check text-primary me-2"></i>Home</a>
-                                <a class="text-body mb-2" href="about.html"><i class="fa fa-check text-primary me-2"></i>About Us</a>
-                                <!-- <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Our Features</a> -->
-                                <a class="text-body mb-2" href="contact.html"><i class="fa fa-check text-primary me-2"></i>Contact us</a>
-                                <a class="text-body mb-2" href="blog.html"><i class="fa fa-check text-primary me-2"></i>Our Blog</a>
-                            <a class="text-body mb-2" href="event.html"><i class="fa fa-check text-primary me-2"></i>Our Events</a>
-                            <a class="text-body mb-2" href="donation.html"><i class="fa fa-check text-primary me-2"></i>Donations</a>
-                            <a class="text-body mb-2" href="gallery.html"><i class="fa fa-check text-primary me-2"></i>Gallery</a>
-                            <!-- <a class="text-body mb-2" href=""><i class="fa fa-check text-primary me-2"></i>Sermons</a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item mt-5">
-                            <h4 class="text-light mb-4">Latest Post</h4>
-                            <div class="d-flex border-bottom border-secondary py-4">
-                                <img src="img/blog-mini-1.jpg" class="img-fluid flex-shrink-0" alt="">
-                                <div class="ps-3">
-                                    <p class="mb-0 text-muted">01 Jan 2045</p>
-                                    <a href="" class="text-body">Lorem ipsum dolor sit amet elit eros vel</a>
-                                </div>
-                            </div>
-                            <div class="d-flex py-4">
-                                <img src="img/blog-mini-2.jpg" class="img-fluid flex-shrink-0" alt="">
-                                <div class="ps-3">
-                                    <p class="mb-0 text-muted">01 Jan 2045</p>
-                                    <a href="" class="text-body">Lorem ipsum dolor sit amet elit eros vel</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container py-4">
-                <div class="border-top border-secondary pb-4"></div>
-                <div class="row">
-                    <!-- <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-                    </div> -->
-                    <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        <!-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> -->
-                    </div>
-                </div>
-            </div>
+    <!-- Testiminial Start -->
+    <div class="container-fluid testimonial py-5">
+      <div class="container py-5">
+        <div
+          class="text-center mx-auto mb-5 wow fadeIn"
+          data-wow-delay="0.1s"
+          style="max-width: 700px"
+        >
+          <p class="fs-5 text-uppercase text-primary">Testimonial</p>
+          <h1 class="display-3">What People Say About Islam</h1>
         </div>
-        <!-- Footer End -->
-
-
-        <!-- Join Us Modal -->
-        <div class="modal fade" id="joinUsModal" tabindex="-1" aria-labelledby="joinUsModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-dark" id="joinUsModalLabel"><i class="fa fa-users me-2"></i>Join Our Community</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body p-4">
-                        <p class="text-muted mb-4">Become a part of All India Sabile Hussain Trust and help us make a difference in the community.</p>
-                        <form id="joinUsForm">
-                            <div class="mb-3">
-                                <label for="joinName" class="form-label">Full Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="joinName" placeholder="Enter your full name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="joinEmail" class="form-label">Email Address <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="joinEmail" placeholder="Enter your email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="joinPhone" class="form-label">Phone Number <span class="text-danger">*</span></label>
-                                <input type="tel" class="form-control" id="joinPhone" placeholder="Enter your phone number" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="joinMessage" class="form-label">Message (Optional)</label>
-                                <textarea class="form-control" id="joinMessage" rows="3" placeholder="Tell us why you want to join..."></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="submitJoinForm(event)"><i class="fa fa-paper-plane me-2"></i>Submit</button>
-                    </div>
+        <div
+          class="owl-carousel testimonial-carousel wow fadeIn"
+          data-wow-delay="0.1s"
+        >
+          <div class="testimonial-item">
+            <div class="d-flex mb-3">
+              <div class="position-relative">
+                <img src="img/testimonial-1.jpg" class="img-fluid" alt="" />
+                <div
+                  class="btn-md-square bg-primary rounded-circle position-absolute"
+                  style="top: 25px; left: -25px"
+                >
+                  <i class="fa fa-quote-left text-dark"></i>
                 </div>
+              </div>
+              <div class="ps-3 my-auto">
+                <h5 class="mb-0">Full Name</h5>
+                <p class="m-0">Profession</p>
+              </div>
             </div>
+            <div class="testimonial-content">
+              <div class="d-flex">
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+              </div>
+              <p class="fs-5 m-0 pt-3">
+                Lorem ipsum dolor sit amet elit, sed do tempor ut labore et
+                dolore magna aliqua. Ut enim ad minim quis.
+              </p>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="d-flex mb-3">
+              <div class="position-relative">
+                <img src="img/testimonial-2.jpg" class="img-fluid" alt="" />
+                <div
+                  class="btn-md-square bg-primary rounded-circle position-absolute"
+                  style="top: 25px; left: -25px"
+                >
+                  <i class="fa fa-quote-left text-dark"></i>
+                </div>
+              </div>
+              <div class="ps-3 my-auto">
+                <h5 class="mb-0">Full Name</h5>
+                <p class="m-0">Profession</p>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <div class="d-flex">
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+              </div>
+              <p class="fs-5 m-0 pt-3">
+                Lorem ipsum dolor sit amet elit, sed do tempor ut labore et
+                dolore magna aliqua. Ut enim ad minim quis.
+              </p>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="d-flex mb-3">
+              <div class="position-relative">
+                <img src="img/testimonial-3.jpg" class="img-fluid" alt="" />
+                <div
+                  class="btn-md-square bg-primary rounded-circle position-absolute"
+                  style="top: 25px; left: -25px"
+                >
+                  <i class="fa fa-quote-left text-dark"></i>
+                </div>
+              </div>
+              <div class="ps-3 my-auto">
+                <h5 class="mb-0">Full Name</h5>
+                <p class="m-0">Profession</p>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <div class="d-flex">
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+              </div>
+              <p class="fs-5 m-0 pt-3">
+                Lorem ipsum dolor sit amet elit, sed do tempor ut labore et
+                dolore magna aliqua. Ut enim ad minim quis.
+              </p>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="d-flex mb-3">
+              <div class="position-relative">
+                <img src="img/testimonial-4.jpg" class="img-fluid" alt="" />
+                <div
+                  class="btn-md-square bg-primary rounded-circle position-absolute"
+                  style="top: 25px; left: -25px"
+                >
+                  <i class="fa fa-quote-left text-dark"></i>
+                </div>
+              </div>
+              <div class="ps-3 my-auto">
+                <h5 class="mb-0">Full Name</h5>
+                <p class="m-0">Profession</p>
+              </div>
+            </div>
+            <div class="testimonial-content">
+              <div class="d-flex">
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+                <i class="fas fa-star text-primary"></i>
+              </div>
+              <p class="fs-5 m-0 pt-3">
+                Lorem ipsum dolor sit amet elit, sed do tempor ut labore et
+                dolore magna aliqua. Ut enim ad minim quis.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <!-- Testiminial End -->
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-primary border-3 border-light back-to-top"><i class="fa fa-arrow-up"></i></a>   
+    <!-- Footer Start -->
+    <div class="container-fluid footer pt-5 wow fadeIn" data-wow-delay="0.1s">
+      <div class="container py-5">
+        <div class="row g-4 footer-inner">
+          <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="footer-item mt-5">
+              <a href="index.html" class="navbar-brand">
+                <img
+                  src="img/logo-1.png"
+                  alt="Logo"
+                  class="img-fluid"
+                  style="width: 100px; height: 100px"
+                />
+              </a>
+              <p class="mb-4 text-secondary">
+                The vision of Sabile Hussain Trust is a world where no one
+                sleeps hungry, no child is deprived of education, and no person
+                in need is left without support.
+              </p>
+              <a href="donation.html" class="btn btn-primary py-2 px-4"
+                >Donate Now</a
+              >
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="footer-item mt-5">
+              <h4 class="text-light mb-4">Our Address</h4>
+              <div class="d-flex flex-column">
+                <!-- <h6 class="text-secondary mb-0">Our Address</h6> -->
+                <div class="d-flex align-items-center border-bottom py-4">
+                  <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"
+                    ><i class="fa fa-map-marker-alt text-dark"></i
+                  ></span>
+                  <a
+                    href="https://www.google.com/maps/dir//Ara+More,+Matkuria+Rd,+near+Everyday+Market,+Karim+Gunj,+Wassepur,+Giridih,+Dhanbad,+Jharkhand+815301/@23.7966532,86.3277898,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x39f6a30b68379e9f:0xce9e175f70e50f7d!2m2!1d86.4102042!2d23.7966746?hl=en-IN&entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D"
+                    class="text-body"
+                    target="_blank"
+                    >Ara More, Matkuria Rd, near Everyday Market, Karim Gunj,
+                    Wassepur, Giridih, Dhanbad, Jharkhand 815301
+                  </a>
+                </div>
+                <h6 class="text-secondary mt-4 mb-0">Our Mobile</h6>
+                <div class="d-flex align-items-center py-4">
+                  <span class="flex-shrink-0 btn-square bg-primary me-3 p-4"
+                    ><i class="fa fa-phone-alt text-dark"></i
+                  ></span>
+                  <a href="tel:+918789833065" class="text-body"
+                    >+91 8789833065</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="footer-item mt-5">
+              <h4 class="text-light mb-4">Explore Link</h4>
+              <div class="d-flex flex-column align-items-start">
+                <a class="text-body mb-2" href="index.html"
+                  ><i class="fa fa-check text-primary me-2"></i>Home</a
+                >
+                <a class="text-body mb-2" href="about.html"
+                  ><i class="fa fa-check text-primary me-2"></i>About Us</a
+                >
+                <a class="text-body mb-2" href="contact.html"
+                  ><i class="fa fa-check text-primary me-2"></i>Contact us</a
+                >
+                <a class="text-body mb-2" href="blog.html"
+                  ><i class="fa fa-check text-primary me-2"></i>Our Blog</a
+                >
+                <a class="text-body mb-2" href="event.html"
+                  ><i class="fa fa-check text-primary me-2"></i>Our Events</a
+                >
+                <a class="text-body mb-2" href="donation.html"
+                  ><i class="fa fa-check text-primary me-2"></i>Donations</a
+                >
+                <a class="text-body mb-2" href="gallery.html"
+                  ><i class="fa fa-check text-primary me-2"></i>Gallery</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="footer-item mt-5">
+              <h4 class="text-light mb-4">Contact Info</h4>
+              <div class="d-flex flex-column">
+                <p class="text-secondary mb-2">
+                  <i class="fas fa-envelope text-primary me-2"></i>
+                  allindiasabilehussaintrust@gmail.com
+                </p>
+                <p class="text-secondary mb-2">
+                  <i class="fas fa-phone text-primary me-2"></i>
+                  +91 8789833065
+                </p>
+                <div class="d-flex pt-3">
+                  <a
+                    class="btn btn-primary btn-sm-square me-2"
+                    href="https://www.facebook.com/share/1EvbRADkfR/"
+                    target="_blank"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a
+                    class="btn btn-primary btn-sm-square me-2"
+                    href="https://x.com/Aisht1325?t=n2SRmREdn4L4CRDREElq2g&s=09"
+                    target="_blank"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a
+                    class="btn btn-primary btn-sm-square me-2"
+                    href="https://www.instagram.com/aisht2513?igsh=MTdibzg3amF4emg0Mw=="
+                    target="_blank"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a
+                    class="btn btn-primary btn-sm-square"
+                    href="https://youtube.com/@aiaht2513?si=8YJjEdN1Jf-NH0eS"
+                    target="_blank"
+                    ><i class="fab fa-youtube"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container py-4">
+        <div class="border-top border-secondary pb-4"></div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="text-secondary mb-0">
+              &copy; 2024 All India Sabile Hussain Trust. All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        
-        <!-- JavaScript Libraries -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- Footer End -->
 
-        <!-- Template Javascript -->
-        <script src="js/config.js"></script>
-        <script src="js/main.js"></script>
-        <script>
-            // Minimal cookie helpers
-            function setCookie(name, value, days) { // Set cookie for language persistence. [web:29]
-              var expires = "";
-              if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days*24*60*60*1000));
-                expires = "; expires=" + date.toUTCString();
-              }
-              document.cookie = name + "=" + (value || "") + expires + "; path=/";
-            }
-      
-            // Programmatically trigger Google select change (works across browsers) [web:7]
-            function triggerHtmlEvent(element, eventName) {
-              var event;
-              if (document.createEvent) {
-                event = document.createEvent("HTMLEvents");
-                event.initEvent(eventName, true, true);
-                element.dispatchEvent(event);
-              } else {
-                event = document.createEventObject();
-                event.eventType = eventName;
-                element.fireEvent("on" + event.eventType, event);
-              }
-            }
-      
-            // Public API to set language; ensure select exists, set value, fire change. [web:7]
-            function setLang(lang) {
-              var sel = document.querySelector("select.goog-te-combo");
-              if (!sel) return false;
-              sel.value = lang;
-              triggerHtmlEvent(sel, "change");
-              return true;
-            }
-      
-            // Ensure English after HMR/hot reload by retrying until the select appears. [web:7]
-            function ensureEnglish(retries) {
-              var attempts = 0;
-              function trySet() {
-                if (attempts++ > (retries || 10)) return;
-                if (!setLang("en")) {
-                  setTimeout(trySet, 200);
-                }
-              }
-              trySet();
-            }
-      
-            // Google callback: set cookie to English and init widget. [web:7]
-            function googleTranslateElementInit() {
-              // Force English as both source and target to keep content neutral. [web:7]
-              // Format: /src/dst (cookie value) [web:7]
-              setCookie("googtrans", "/en/en", 1);
-              new google.translate.TranslateElement({
-                pageLanguage: "en",
-                includedLanguages: "en,ur,ar,fa,hi",
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-              }, "google_translate_element");
-      
-              // After Google injects the select asynchronously, re-assert English. [web:7]
-              ensureEnglish(15);
-            }
-      
-            // Optional: expose quick setter for UI buttons
-            window.setLang = setLang;
-          </script>
-      
-          <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-          
-        </body>
+    <!-- Join Us Modal -->
+    <div
+      class="modal fade"
+      id="joinUsModal"
+      tabindex="-1"
+      aria-labelledby="joinUsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <h5 class="modal-title text-dark" id="joinUsModalLabel">
+              <i class="fa fa-users me-2"></i>Join Our Community
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <p class="text-muted mb-4">
+              Become a part of All India Sabile Hussain Trust and help us make a
+              difference in the community.
+            </p>
+            <form id="joinUsForm">
+              <div class="mb-3">
+                <label for="joinName" class="form-label"
+                  >Full Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="joinName"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="joinEmail" class="form-label"
+                  >Email Address <span class="text-danger">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="joinEmail"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="joinPhone" class="form-label"
+                  >Phone Number <span class="text-danger">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="joinPhone"
+                  placeholder="Enter your phone number"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="joinMessage" class="form-label"
+                  >Message (Optional)</label
+                >
+                <textarea
+                  class="form-control"
+                  id="joinMessage"
+                  rows="3"
+                  placeholder="Tell us why you want to join..."
+                ></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="submitJoinForm(event)"
+            >
+              <i class="fa fa-paper-plane me-2"></i>Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary border-3 border-light back-to-top"
+      ><i class="fa fa-arrow-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      // Minimal cookie helpers
+      function setCookie(name, value, days) {
+        // Set cookie for language persistence. [web:29]
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+
+      // Programmatically trigger Google select change (works across browsers) [web:7]
+      function triggerHtmlEvent(element, eventName) {
+        var event;
+        if (document.createEvent) {
+          event = document.createEvent("HTMLEvents");
+          event.initEvent(eventName, true, true);
+          element.dispatchEvent(event);
+        } else {
+          event = document.createEventObject();
+          event.eventType = eventName;
+          element.fireEvent("on" + event.eventType, event);
+        }
+      }
+
+      // Public API to set language; ensure select exists, set value, fire change. [web:7]
+      function setLang(lang) {
+        var sel = document.querySelector("select.goog-te-combo");
+        if (!sel) return false;
+        sel.value = lang;
+        triggerHtmlEvent(sel, "change");
+        return true;
+      }
+
+      // Ensure English after HMR/hot reload by retrying until the select appears. [web:7]
+      function ensureEnglish(retries) {
+        var attempts = 0;
+        function trySet() {
+          if (attempts++ > (retries || 10)) return;
+          if (!setLang("en")) {
+            setTimeout(trySet, 200);
+          }
+        }
+        trySet();
+      }
+
+      // Google callback: set cookie to English and init widget. [web:7]
+      function googleTranslateElementInit() {
+        // Force English as both source and target to keep content neutral. [web:7]
+        // Format: /src/dst (cookie value) [web:7]
+        setCookie("googtrans", "/en/en", 1);
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+
+            includedLanguages: "en,ur,ar,fa,hi,bn,ta,te,ml,kn,mr,pa,tr,id,ms",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false,
+          },
+          "google_translate_element"
+        );
+
+        // After Google injects the select asynchronously, re-assert English. [web:7]
+        ensureEnglish(15);
+      }
+
+      // Optional: expose quick setter for UI buttons
+      window.setLang = setLang;
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </body>
 </html>
