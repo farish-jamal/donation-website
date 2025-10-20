@@ -66,6 +66,34 @@
         display: none !important;
       } /* Hide tooltip overlay. [web:25] */
 
+      /* WhatsApp Button Styling */
+      .whatsapp-button {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+      
+      .whatsapp-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        text-decoration: none;
+      }
+      
+      .whatsapp-button i {
+        color: white;
+      }
+
       /* Loader improvements */
       #spinner .text-center {
         animation: fadeInUp 0.8s ease-out;
@@ -1204,6 +1232,11 @@
         </div>
       </div>
     </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/918789833065" target="_blank" class="btn btn-success border-3 border-light whatsapp-button"
+      ><i class="fab fa-whatsapp"></i
+    ></a>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-light back-to-top"
