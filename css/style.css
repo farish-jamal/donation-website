@@ -222,11 +222,13 @@ h6,
 
 /* Each slide background and padding */
 .hero-header-slide {
-  padding-top: 8rem;
-  padding-bottom: 6rem;
+  padding-top: 1rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   height: calc(100vh); /* Subtract navbar height from viewport height */
 }
 
