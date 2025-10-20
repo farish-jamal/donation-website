@@ -391,23 +391,18 @@
               <h3 class="mb-4">Scan to Pay</h3>
               <div class="qr-code-container mb-4">
                 <!-- Placeholder for QR Code - Replace with actual QR code image -->
-                <div
-                  style="
-                    width: 300px;
-                    height: 300px;
-                    background: #fff;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border: 2px dashed #ddd;
-                  "
-                >
-                  <div class="text-center">
-                    <i class="fas fa-qrcode fa-5x text-primary mb-3"></i>
-                    <p class="text-muted">
-                      Replace this with your<br />payment QR code image
-                    </p>
-                  </div>
+                <div class="qr-code-wrapper">
+                  <img 
+                    src="img/qr.jpeg" 
+                    alt="Payment QR Code" 
+                    class="img-fluid"
+                    style="
+                      max-width: 300px;
+                      max-height: 300px;
+                      border: 2px solid #ddd;
+                      border-radius: 8px;
+                    "
+                  />
                 </div>
                 <!-- When you have a QR code, replace the above div with: -->
                 <!-- <img src="img/donation-qr.png" alt="Payment QR Code" class="img-fluid" style="width: 300px; height: 300px;"> -->
@@ -415,13 +410,22 @@
               <div class="mb-3">
                 <h5 class="mb-2">Payment Details:</h5>
                 <p class="mb-1">
-                  <strong>Account Name:</strong> All India Sabile Hussain Trust
+                  <strong>Account Name:</strong> ALL INDIA SABILE HUSSAIN TRUST
                 </p>
-                <p class="mb-1"><strong>UPI ID:</strong> trust@upi</p>
+                <p class="mb-1">
+                  <strong>Bank Name:</strong> State Bank of India
+                </p>
+                <p class="mb-1">
+                  <strong>Account No:</strong> 42149701368
+                </p>
+                <p class="mb-1">
+                  <strong>IFSC Code:</strong> SBIN0017472
+                </p>
+                <p class="mb-1">
+                  <strong>Google Pay / PhonePe:</strong> +91 8789833065
+                </p>
                 <p class="mb-0 text-muted">
-                  <small
-                    >Please save the UTR/Transaction ID after payment</small
-                  >
+                  <small>After payment, please save the UTR/Transaction ID</small>
                 </p>
               </div>
             </div>
