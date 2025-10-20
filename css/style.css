@@ -290,8 +290,8 @@ h6,
     padding-top: 4rem;
     padding-bottom: 3rem;
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+    background-size: contain;
+    background-position: center top;
     height: 60vh; /* Consistent with parent */
     display: flex;
     align-items: center;
@@ -330,7 +330,7 @@ h6,
     width: 8%;
   }
   .carousel-indicators {
-    bottom: 1rem;
+    bottom: -7rem;
   }
   
   /* Hide carousel controls on very small screens */
@@ -341,13 +341,15 @@ h6,
     }
     
     .hero-headers {
-      height: 50vh;
+      height: 20vh;
       margin-top: 80px;
     }
     
     .hero-header-slide {
       height: 50vh;
       padding-top: 2rem;
+      background-size: contain;
+      background-position: center top;
     }
   }
 }
