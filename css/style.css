@@ -135,6 +135,7 @@ h6,
 /*** Navbar Start ***/
 .fixed-top {
   transition: 0.5s;
+  z-index: 1030; /* Ensure navbar stays above carousel */
 }
 
 .navbar {
@@ -214,17 +215,18 @@ h6,
 }
 .hero-headers {
   margin-bottom: 5rem;
-  height: 100vh;
+  height: calc(100vh - 140px); /* Subtract navbar height from viewport height */
+  margin-top: 140px; /* Account for fixed navbar height */
 }
 
 /* Each slide background and padding */
 .hero-header-slide {
-  padding-top: 18rem;
+  padding-top: 8rem;
   padding-bottom: 6rem;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: calc(100vh - 140px); /* Subtract navbar height from viewport height */
 }
 
 /* Optional: dark overlay for readability */
@@ -276,19 +278,77 @@ h6,
     margin-left: 0;
     margin-top: 0.75rem;
   }
-  .hero-header-slide {
-    padding-top: 18rem;
-    padding-bottom: 6rem;
-    background-repeat: no-repeat;
-    background-size: fit;
-    height: 100vh;
+  
+  /* Mobile hero carousel improvements */
+  .hero-headers {
+    margin-top: 100px; /* Reduced for mobile */
+    height: 60vh; /* Use viewport height for better mobile experience */
+    margin-bottom: 3rem;
   }
+  
+  .hero-header-slide {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 60vh; /* Consistent with parent */
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Mobile text improvements */
+  .hero-header-slide .display-1 {
+    font-size: 2rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .hero-header-slide .fs-4 {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .hero-header-slide .btn {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 0.5rem !important;
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+  
+  /* Ensure hero content is centered and readable on mobile */
+  .hero-header-slide .hero-header-inner {
+    padding: 2rem 1rem !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+  }
+  
   .carousel-control-prev,
   .carousel-control-next {
-    width: 10%;
+    width: 8%;
   }
   .carousel-indicators {
-    bottom: 0.75rem;
+    bottom: 1rem;
+  }
+  
+  /* Hide carousel controls on very small screens */
+  @media (max-width: 576px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+      display: none;
+    }
+    
+    .hero-headers {
+      height: 50vh;
+      margin-top: 80px;
+    }
+    
+    .hero-header-slide {
+      height: 50vh;
+      padding-top: 2rem;
+    }
   }
 }
 
