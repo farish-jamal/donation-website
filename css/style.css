@@ -5,6 +5,7 @@
   visibility: hidden;
   transition: opacity 0.8s ease-out, visibility 0s linear 0.5s;
   z-index: 99999;
+  background-color: #f1c150 !important;
 }
 
 #spinner.show {
@@ -226,7 +227,7 @@ h6,
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 140px); /* Subtract navbar height from viewport height */
+  height: calc(100vh); /* Subtract navbar height from viewport height */
 }
 
 /* Optional: dark overlay for readability */
