@@ -65,6 +65,43 @@
       .VIpgJd-ZVi9od-ORHb-OEVmcd {
         display: none !important;
       } /* Hide tooltip overlay. [web:25] */
+
+      /* Header/topbar improvements */
+      .topbar {
+        background: #ffffff;
+        border-bottom: 1px solid #f0f2f5;
+        padding-top: 6px;
+        padding-bottom: 6px;
+      }
+      .fixed-top {
+        z-index: 1030; /* above carousel */
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+      }
+      body {
+        padding-top: 160px; /* space for fixed header on larger screens */
+      }
+      .topbar .contact-item a { color: #6b7280; }
+      .topbar .social a { font-size: 14px; }
+
+      @media (max-width: 991.98px) {
+        body { padding-top: 160px; } /* reduced since header is smaller */
+        .topbar .h-100 { height: auto !important; }
+        .topbar .contact-item { margin-bottom: 4px; }
+        .topbar .email-item { display: none !important; }
+        .topbar, .topbar span, .topbar a { font-size: 12px; }
+        .topbar .social { row-gap: 4px; }
+        .topbar .social a { font-size: 12px; }
+        /* hide ONLY social icons and label on mobile; keep language dropdown */
+        .topbar .social .social-link,
+        .topbar .follow-label { display: none !important; }
+        #google_translate_element .goog-te-gadget-simple { zoom: 0.65; }
+        #google_translate_element { display: inline-flex; align-items: center; }
+        /* tighten navbar height and logo on mobile */
+        .navbar.py-3 { padding-top: 0.35rem !important; padding-bottom: 0.35rem !important; }
+        .navbar-brand img { width: 48px !important; height: 48px !important; }
+        /* add spacing between topbar and navbar to avoid overlap */
+        .topbar + .container .navbar { margin-top: 6px; }
+      }
     </style>
   </head>
 
@@ -80,53 +117,53 @@
 
     <!-- Topbar start -->
     <div class="container-fluid fixed-top">
-      <div class="container topbar d-none d-lg-block">
+      <div class="container topbar">
         <div class="topbar-inner">
-          <div class="row gx-0">
-            <div class="col-lg-7 text-start">
-              <div class="h-100 d-inline-flex align-items-center me-4">
+          <div class="row gx-0 align-items-center">
+            <div class="col-8 col-lg-7 text-start">
+              <div class="h-100 d-inline-flex align-items-center me-4 contact-item">
                 <span class="fa fa-phone-alt me-2 text-dark"></span>
                 <a href="#" class="text-secondary"
                   ><span>+91 8789833065</span></a
                 >
               </div>
-              <div class="h-100 d-inline-flex align-items-center">
+              <div class="h-100 d-inline-flex align-items-center contact-item email-item">
                 <span class="far fa-envelope me-2 text-dark"></span>
-                <a href="#" class="text-secondary"
+                <a href="#" class="text-secondary text-break"
                   ><span>allindiasabilehussaintrust@gmail.com</span></a
                 >
               </div>
             </div>
-            <div class="col-lg-5 text-end">
-              <div class="h-100 d-inline-flex align-items-center">
-                <span class="text-body">Follow Us:</span>
+            <div class="col-4 col-lg-5 text-lg-end">
+              <div class="h-100 d-inline-flex align-items-center flex-wrap justify-content-end justify-content-lg-end gap-2 w-100 social">
+                <span class="text-body follow-label">Follow Us:</span>
                 <a
-                  class="text-dark px-2"
+                  class="text-dark px-2 social-link"
                   href="https://www.facebook.com/share/1EvbRADkfR/
-                                "
+                          "
                   target="_blank"
                   ><i class="fab fa-facebook-f"></i>
                 </a>
                 <a
-                  class="text-dark px-2"
+                  class="text-dark px-2 social-link"
                   href="https://x.com/Aisht1325?t=n2SRmREdn4L4CRDREElq2g&s=09"
                   target="_blank"
                   ><i class="fab fa-twitter"></i
                 ></a>
                 <a
-                  class="text-dark px-2"
+                  class="text-dark px-2 social-link"
                   href="https://youtube.com/@aiaht2513?si=8YJjEdN1Jf-NH0eS"
                   target="_blank"
                   ><i class="fab fa-youtube"></i
                 ></a>
                 <a
-                  class="text-dark px-2"
+                  class="text-dark px-2 social-link"
                   href="https://www.instagram.com/aisht2513?igsh=MTdibzg3amF4emg0Mw=="
                   target="_blank"
                   ><i class="fab fa-instagram"></i
                 ></a>
 
-                <div id="google_translate_element"></div>
+                <div id="google_translate_element" class="ms-1"></div>
               </div>
             </div>
           </div>
