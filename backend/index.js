@@ -576,7 +576,8 @@ app.post(
       if (req.file) {
         image = await uploadSingleFile(req.file.path, "leadership");
       }
-      const leadership = await Leadership.create({ image });
+      const { state, city } = req.body;
+      const leadership = await Leadership.create({ image, state, city });
       res.status(201).json({
         success: true,
         message: "Leadership created successfully",
@@ -629,7 +630,8 @@ app.patch(
       if (req.file) {
         image = await uploadSingleFile(req.file.path, "leadership");
       }
-      const leadership = await Leadership.findByIdAndUpdate(id, { image });
+      const { state, city } = req.body;
+      const leadership = await Leadership.findByIdAndUpdate(id, { image, state, city });
       res.status(200).json({
         success: true,
         message: "Leadership updated successfully",
