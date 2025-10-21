@@ -206,6 +206,111 @@
       .lightbox-next {
         right: 20px;
       }
+
+      /* Video Styles */
+      .video-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        background: #fff;
+      }
+
+      .video-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .video-thumbnail {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .video-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .video-play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(254, 161, 22, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        transition: all 0.3s ease;
+        z-index: 2;
+      }
+
+      .video-item:hover .video-play-button {
+        background: rgba(254, 161, 22, 1);
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .video-info {
+        padding: 20px;
+      }
+
+      .video-info h5 {
+        color: #333;
+        margin: 0 0 10px 0;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .video-info p {
+        color: #666;
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .video-duration {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      /* YouTube embed styles */
+      .youtube-embed {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .youtube-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
     </style>
   </head>
 
@@ -398,6 +503,59 @@
       </div>
     </div>
     <!-- Gallery End -->
+
+    <!-- Featured Videos Start -->
+    <div class="container-fluid py-5 bg-light">
+      <div class="container py-5">
+        <div
+          class="text-center mx-auto mb-5 wow fadeIn"
+          data-wow-delay="0.1s"
+          style="max-width: 700px"
+        >
+          <p class="fs-5 text-uppercase text-primary">Featured Videos</p>
+          <h1 class="display-3">Our Video Collection</h1>
+          <p class="text-muted">
+            Watch our latest videos and stay connected with our community activities.
+          </p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="videos-loading" class="text-center py-5">
+          <div
+            class="spinner-border text-primary"
+            role="status"
+            style="width: 3rem; height: 3rem"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-3 text-muted">Loading videos...</p>
+        </div>
+
+        <!-- Error State -->
+        <div
+          id="videos-error"
+          class="alert alert-danger text-center"
+          style="display: none"
+        >
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          <span id="videos-error-message"
+            >Failed to load videos. Please try again later.</span
+          >
+        </div>
+
+        <!-- Empty State -->
+        <div id="videos-empty" class="text-center py-5" style="display: none">
+          <i class="fas fa-video text-muted" style="font-size: 4rem"></i>
+          <p class="mt-3 text-muted fs-5">No videos available yet.</p>
+        </div>
+
+        <!-- Videos Grid -->
+        <div id="videos-grid" class="row g-4" style="display: none">
+          <!-- Video items will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+    <!-- Featured Videos End -->
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
@@ -666,9 +824,11 @@
       // API Configuration
       const API_BASE_URL = "https://donation-website-s9mi.onrender.com";
       const GALLERY_API_URL = `${API_BASE_URL}/api/gallery/get-all-gallery-items`;
+      const VIDEOS_API_URL = `${API_BASE_URL}/api/video/get-all-videos`;
 
       // State
       let galleryItems = [];
+      let videos = [];
       let currentImageIndex = 0;
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
@@ -807,9 +967,157 @@
         }
       });
 
+      // Fetch videos from API
+      async function fetchVideos() {
+        const videosLoading = document.getElementById("videos-loading");
+        const videosError = document.getElementById("videos-error");
+        const videosEmpty = document.getElementById("videos-empty");
+        const videosGrid = document.getElementById("videos-grid");
+
+        try {
+          // Show loading state
+          videosLoading.style.display = "block";
+          videosError.style.display = "none";
+          videosEmpty.style.display = "none";
+          videosGrid.style.display = "none";
+
+          const response = await fetch(VIDEOS_API_URL);
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data.success && data.videos && data.videos.length > 0) {
+            videos = data.videos;
+            renderVideos(videos);
+
+            // Hide loading, show videos
+            videosLoading.style.display = "none";
+            videosGrid.style.display = "flex";
+          } else {
+            // No videos found
+            videosLoading.style.display = "none";
+            videosEmpty.style.display = "block";
+          }
+        } catch (error) {
+          console.error("Error fetching videos:", error);
+
+          // Show error state
+          videosLoading.style.display = "none";
+          videosError.style.display = "block";
+          document.getElementById("videos-error-message").textContent =
+            "Failed to load videos. Please ensure the backend server is running.";
+        }
+      }
+
+      // Render videos
+      function renderVideos(videoItems) {
+        const videosGrid = document.getElementById("videos-grid");
+        videosGrid.innerHTML = "";
+
+        videoItems.forEach((video, index) => {
+          const delayIndex = (index % 4) + 1;
+          const delay = delayIndex * 0.1;
+
+          const colDiv = document.createElement("div");
+          colDiv.className = "col-md-6 col-lg-4 col-xl-3 wow fadeIn";
+          colDiv.setAttribute("data-wow-delay", `${delay}s`);
+
+          // Extract YouTube video ID from URL
+          const youtubeId = extractYouTubeId(video.videoLink);
+          const thumbnailUrl = youtubeId 
+            ? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`
+            : 'https://via.placeholder.com/500x300?text=Video+Thumbnail';
+
+          colDiv.innerHTML = `
+            <div class="video-item" onclick="openVideoModal('${video.videoLink}', '${video.title}')">
+              <div class="video-thumbnail">
+                <img src="${thumbnailUrl}" alt="${video.title}" onerror="this.src='https://via.placeholder.com/500x300?text=Video+Thumbnail'">
+                <div class="video-play-button">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="video-info">
+                <h5>${video.title}</h5>
+                <p>Click to watch</p>
+              </div>
+            </div>
+          `;
+
+          videosGrid.appendChild(colDiv);
+        });
+
+        // Reinitialize WOW.js for new elements
+        if (typeof WOW !== "undefined") {
+          new WOW().init();
+        }
+      }
+
+      // Extract YouTube video ID from URL
+      function extractYouTubeId(url) {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+      }
+
+      // Open video modal
+      function openVideoModal(videoLink, title) {
+        const youtubeId = extractYouTubeId(videoLink);
+        if (!youtubeId) {
+          // If not a YouTube link, open in new tab
+          window.open(videoLink, '_blank');
+          return;
+        }
+
+        // Create modal for YouTube video
+        const modalHtml = `
+          <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="videoModalLabel">${title}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                  <div class="youtube-embed">
+                    <iframe 
+                      src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0" 
+                      title="${title}"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen>
+                    </iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Remove existing modal if any
+        const existingModal = document.getElementById('videoModal');
+        if (existingModal) {
+          existingModal.remove();
+        }
+
+        // Add modal to body
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+        // Show modal
+        const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+        videoModal.show();
+
+        // Clean up modal when hidden
+        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+          this.remove();
+        });
+      }
+
       // Fetch gallery items when page loads
       document.addEventListener("DOMContentLoaded", function () {
         fetchGalleryItems();
+        fetchVideos();
       });
     </script>
 
