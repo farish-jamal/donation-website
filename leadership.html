@@ -34,7 +34,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/loader.png" />
     <link rel="shortcut icon" type="image/png" href="img/loader.png" />
@@ -79,27 +79,62 @@
       body {
         padding-top: 160px; /* space for fixed header on larger screens */
       }
-      .topbar .contact-item a { color: #6b7280; }
-      .topbar .social a { font-size: 14px; }
+      .topbar .contact-item a {
+        color: #6b7280;
+      }
+      .topbar .social a {
+        font-size: 14px;
+      }
 
       @media (max-width: 991.98px) {
-        body { padding-top: 160px; } /* reduced since header is smaller */
-        .topbar .h-100 { height: auto !important; }
-        .topbar .contact-item { margin-bottom: 4px; }
-        .topbar .email-item { display: none !important; }
-        .topbar, .topbar span, .topbar a { font-size: 12px; }
-        .topbar .social { row-gap: 4px; }
-        .topbar .social a { font-size: 12px; }
+        body {
+          padding-top: 160px;
+        } /* reduced since header is smaller */
+        .topbar .h-100 {
+          height: auto !important;
+        }
+        .topbar .contact-item {
+          margin-bottom: 4px;
+        }
+        .topbar .email-item {
+          display: none !important;
+        }
+        .topbar,
+        .topbar span,
+        .topbar a {
+          font-size: 12px;
+        }
+        .topbar .social {
+          row-gap: 4px;
+        }
+        .topbar .social a {
+          font-size: 12px;
+        }
         /* hide ONLY social icons and label on mobile; keep language dropdown */
         .topbar .social .social-link,
-        .topbar .follow-label { display: none !important; }
-        #google_translate_element .goog-te-gadget-simple { zoom: 0.65; }
-        #google_translate_element { display: inline-flex; align-items: center; }
+        .topbar .follow-label {
+          display: none !important;
+        }
+        #google_translate_element .goog-te-gadget-simple {
+          zoom: 0.65;
+        }
+        #google_translate_element {
+          display: inline-flex;
+          align-items: center;
+        }
         /* tighten navbar height and logo on mobile */
-        .navbar.py-3 { padding-top: 0.35rem !important; padding-bottom: 0.35rem !important; }
-        .navbar-brand img { width: 48px !important; height: 48px !important; }
+        .navbar.py-3 {
+          padding-top: 0.35rem !important;
+          padding-bottom: 0.35rem !important;
+        }
+        .navbar-brand img {
+          width: 48px !important;
+          height: 48px !important;
+        }
         /* add spacing between topbar and navbar to avoid overlap */
-        .topbar + .container .navbar { margin-top: 6px; }
+        .topbar + .container .navbar {
+          margin-top: 6px;
+        }
       }
 
       /* Leadership Styles */
@@ -233,6 +268,20 @@
       .leadership-grid .col-md-6 {
         margin-bottom: 30px;
       }
+      /* Add to your CSS */
+      .leadership-badge {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        background: rgba(0, 0, 0, 0.65);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        line-height: 1;
+        pointer-events: none; /* click pass-through */
+        z-index: 2;
+      }
 
       @media (max-width: 768px) {
         .leadership-item img {
@@ -253,7 +302,7 @@
           src="img/loader.png"
           alt="All India Sabile Hussain Trust"
           class="img-fluid mb-3"
-          style="width: 120px; height: 120px; animation: pulse 2s infinite;"
+          style="width: 120px; height: 120px; animation: pulse 2s infinite"
         />
         <div class="spinner-grow text-primary" role="status"></div>
         <p class="mt-3 text-muted small">Loading...</p>
@@ -267,13 +316,17 @@
         <div class="topbar-inner">
           <div class="row gx-0 align-items-center">
             <div class="col-8 col-lg-7 text-start">
-              <div class="h-100 d-inline-flex align-items-center me-4 contact-item">
+              <div
+                class="h-100 d-inline-flex align-items-center me-4 contact-item"
+              >
                 <span class="fa fa-phone-alt me-2 text-dark"></span>
                 <a href="#" class="text-secondary"
                   ><span>+91 8789833065</span></a
                 >
               </div>
-              <div class="h-100 d-inline-flex align-items-center contact-item email-item">
+              <div
+                class="h-100 d-inline-flex align-items-center contact-item email-item"
+              >
                 <span class="far fa-envelope me-2 text-dark"></span>
                 <a href="#" class="text-secondary text-break"
                   ><span>allindiasabilehussaintrust@gmail.com</span></a
@@ -281,7 +334,9 @@
               </div>
             </div>
             <div class="col-4 col-lg-5 text-lg-end">
-              <div class="h-100 d-inline-flex align-items-center flex-wrap justify-content-end justify-content-lg-end gap-2 w-100 social">
+              <div
+                class="h-100 d-inline-flex align-items-center flex-wrap justify-content-end justify-content-lg-end gap-2 w-100 social"
+              >
                 <span class="text-body follow-label">Follow Us:</span>
                 <a
                   class="text-dark px-2 social-link"
@@ -339,7 +394,9 @@
               <a href="event.html" class="nav-item nav-link">Events</a>
               <a href="blog.html" class="nav-item nav-link">Latest Blog</a>
               <a href="gallery.html" class="nav-item nav-link">Gallery</a>
-              <a href="leadership.html" class="nav-item nav-link active">Leadership</a>
+              <a href="leadership.html" class="nav-item nav-link active"
+                >Leadership</a
+              >
               <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
             <div class="d-flex gap-2 ms-3 mb-3">
@@ -367,11 +424,10 @@
           <div class="col-lg-7">
             <div class="hero-header-inner animated zoomIn">
               <p class="fs-5 text-uppercase text-primary">Our Leadership</p>
-              <h1 class="display-3 text-dark mb-4">
-                Meet Our Leaders
-              </h1>
+              <h1 class="display-3 text-dark mb-4">Meet Our Leaders</h1>
               <p class="text-dark fs-5">
-                Get to know the dedicated individuals who guide our mission and inspire our community.
+                Get to know the dedicated individuals who guide our mission and
+                inspire our community.
               </p>
             </div>
           </div>
@@ -391,7 +447,8 @@
           <p class="fs-5 text-uppercase text-primary">Leadership Team</p>
           <h1 class="display-3">Our Leadership</h1>
           <p class="text-muted">
-            Meet the dedicated leaders who guide our organization with wisdom, compassion, and commitment to our community.
+            Meet the dedicated leaders who guide our organization with wisdom,
+            compassion, and commitment to our community.
           </p>
         </div>
 
@@ -415,18 +472,29 @@
         >
           <i class="fas fa-exclamation-triangle me-2"></i>
           <span id="error-message"
-            >Failed to load leadership information. Please try again later.</span
+            >Failed to load leadership information. Please try again
+            later.</span
           >
         </div>
 
         <!-- Empty State -->
-        <div id="leadership-empty" class="text-center py-5" style="display: none">
+        <div
+          id="leadership-empty"
+          class="text-center py-5"
+          style="display: none"
+        >
           <i class="fas fa-users text-muted" style="font-size: 4rem"></i>
-          <p class="mt-3 text-muted fs-5">No leadership information available yet.</p>
+          <p class="mt-3 text-muted fs-5">
+            No leadership information available yet.
+          </p>
         </div>
 
         <!-- Leadership Grid -->
-        <div id="leadership-grid" class="row g-4 leadership-grid" style="display: none">
+        <div
+          id="leadership-grid"
+          class="row g-4 leadership-grid"
+          style="display: none"
+        >
           <!-- Leadership items will be dynamically inserted here -->
         </div>
       </div>
@@ -731,11 +799,7 @@
 
           const data = await response.json();
 
-          if (
-            data.success &&
-            data.leadership &&
-            data.leadership.length > 0
-          ) {
+          if (data.success && data.leadership && data.leadership.length > 0) {
             leadershipItems = data.leadership;
             renderLeadership(leadershipItems);
 
@@ -771,15 +835,21 @@
           colDiv.className = "col-md-6 col-lg-4 col-xl-3 wow fadeIn";
           colDiv.setAttribute("data-wow-delay", `${delay}s`);
 
+          // In renderLeadership(), replace innerHTML
           colDiv.innerHTML = `
-                    <div class="leadership-item" onclick="openLightbox(${index})">
-                        <img src="${item.image}" alt="Leadership" class="img-fluid" onerror="this.src='https://via.placeholder.com/500x500?text=Image+Not+Found'">
-                        <div class="leadership-overlay">
-                            <h5>Leadership Member</h5>
-                            <p>Click to view</p>
-                        </div>
-                    </div>
-                `;
+  <div class="leadership-item" onclick="openLightbox(${index})" style="position:relative">
+    <img src="${item.image}" alt="Leadership" class="img-fluid"
+      onerror="this.src='https://via.placeholder.com/500x500?text=Image+Not+Found'">
+    <div class="leadership-badge">
+      City :- ${item.city || "City N/A"}, State :- ${item.state || "State N/A"}
+    </div>
+    <div class="leadership-overlay">
+      <h5>Leadership Member</h5>
+      <p>Click to view</p>
+  
+    </div>
+  </div>
+`;
 
           leadershipGrid.appendChild(colDiv);
         });
