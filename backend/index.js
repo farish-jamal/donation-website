@@ -13,6 +13,7 @@ const { uploadSingleFile } = require("./utils/upload_single/index");
 const connectDB = require("./config/db");
 const Gallery = require("./models/gallery");
 const Video = require("./models/video");
+const Department = require("./models/department");
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -508,6 +509,54 @@ app.delete("/api/video/delete-video/:id", async (req, res) => {
   res.status(200).json({
     success: true,
     message: "Video deleted successfully",
+  });
+});
+
+// Department Routes
+app.post("/api/department/create-department", async (req, res) => {
+  const { title, description } = req.body;
+  const department = await Department.create({ title, description });
+  res.status(201).json({
+    success: true,
+    message: "Department created successfully",
+  });
+});
+
+app.get("/api/department/get-all-departments", async (req, res) => {
+  const departments = await Department.find();
+  res.status(200).json({
+    success: true,
+    message: "Departments fetched successfully",
+    departments,
+  });
+});
+
+app.delete("/api/department/delete-department/:id", async (req, res) => {
+  const { id } = req.params;
+  const department = await Department.findByIdAndDelete(id);
+  res.status(200).json({
+    success: true,
+    message: "Department deleted successfully",
+  });
+});
+
+app.get("/api/department/get-department/:id", async (req, res) => {
+  const { id } = req.params;
+  const department = await Department.findById(id);
+  res.status(200).json({
+    success: true,
+    message: "Department fetched successfully",
+    department,
+  });
+});
+
+app.patch("/api/department/update-department/:id", async (req, res) => {
+  const { id } = req.params;
+  const { title, description } = req.body;
+  const department = await Department.findByIdAndUpdate(id, { title, description });
+  res.status(200).json({
+    success: true,
+    message: "Department updated successfully",
   });
 });
 
