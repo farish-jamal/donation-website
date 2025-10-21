@@ -34,7 +34,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/loader.png" />
     <link rel="shortcut icon" type="image/png" href="img/loader.png" />
@@ -88,13 +88,13 @@
         transition: all 0.3s ease;
         text-decoration: none;
       }
-      
+
       .whatsapp-button:hover {
         transform: scale(1.1);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         text-decoration: none;
       }
-      
+
       .whatsapp-button i {
         color: white;
       }
@@ -103,7 +103,7 @@
       #spinner .text-center {
         animation: fadeInUp 0.8s ease-out;
       }
-      
+
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -129,27 +129,62 @@
       body {
         padding-top: 120px; /* space for fixed header on larger screens */
       }
-      .topbar .contact-item a { color: #6b7280; }
-      .topbar .social a { font-size: 14px; }
+      .topbar .contact-item a {
+        color: #6b7280;
+      }
+      .topbar .social a {
+        font-size: 14px;
+      }
 
       @media (max-width: 991.98px) {
-        body { padding-top: 120px; } /* reduced since header is smaller */
-        .topbar .h-100 { height: auto !important; }
-        .topbar .contact-item { margin-bottom: 4px; }
-        .topbar .email-item { display: none !important; }
-        .topbar, .topbar span, .topbar a { font-size: 12px; }
-        .topbar .social { row-gap: 4px; }
-        .topbar .social a { font-size: 12px; }
+        body {
+          padding-top: 120px;
+        } /* reduced since header is smaller */
+        .topbar .h-100 {
+          height: auto !important;
+        }
+        .topbar .contact-item {
+          margin-bottom: 4px;
+        }
+        .topbar .email-item {
+          display: none !important;
+        }
+        .topbar,
+        .topbar span,
+        .topbar a {
+          font-size: 12px;
+        }
+        .topbar .social {
+          row-gap: 4px;
+        }
+        .topbar .social a {
+          font-size: 12px;
+        }
         /* hide ONLY social icons and label on mobile; keep language dropdown */
         .topbar .social .social-link,
-        .topbar .follow-label { display: none !important; }
-        #google_translate_element .goog-te-gadget-simple { zoom: 0.65; }
-        #google_translate_element { display: inline-flex; align-items: center; }
+        .topbar .follow-label {
+          display: none !important;
+        }
+        #google_translate_element .goog-te-gadget-simple {
+          zoom: 0.65;
+        }
+        #google_translate_element {
+          display: inline-flex;
+          align-items: center;
+        }
         /* tighten navbar height and logo on mobile */
-        .navbar.py-3 { padding-top: 0.35rem !important; padding-bottom: 0.35rem !important; }
-        .navbar-brand img { width: 48px !important; height: 48px !important; }
+        .navbar.py-3 {
+          padding-top: 0.35rem !important;
+          padding-bottom: 0.35rem !important;
+        }
+        .navbar-brand img {
+          width: 48px !important;
+          height: 48px !important;
+        }
         /* add spacing between topbar and navbar to avoid overlap */
-        .topbar + .container .navbar { margin-top: 6px; }
+        .topbar + .container .navbar {
+          margin-top: 6px;
+        }
       }
     </style>
   </head>
@@ -165,7 +200,7 @@
           src="img/loader.png"
           alt="All India Sabile Hussain Trust"
           class="img-fluid mb-3"
-          style="width: 120px; height: 120px; animation: pulse 2s infinite;"
+          style="width: 120px; height: 120px; animation: pulse 2s infinite"
         />
         <div class="spinner-grow text-primary" role="status"></div>
         <p class="mt-3 text-muted small">Loading...</p>
@@ -179,13 +214,17 @@
         <div class="topbar-inner">
           <div class="row gx-0 align-items-center">
             <div class="col-8 col-lg-7 text-start">
-              <div class="h-100 d-inline-flex align-items-center me-4 contact-item">
+              <div
+                class="h-100 d-inline-flex align-items-center me-4 contact-item"
+              >
                 <span class="fa fa-phone-alt me-2 text-dark"></span>
                 <a href="#" class="text-secondary"
                   ><span>+91 8789833065</span></a
                 >
               </div>
-              <div class="h-100 d-inline-flex align-items-center contact-item email-item">
+              <div
+                class="h-100 d-inline-flex align-items-center contact-item email-item"
+              >
                 <span class="far fa-envelope me-2 text-dark"></span>
                 <a href="#" class="text-secondary text-break"
                   ><span>allindiasabilehussaintrust@gmail.com</span></a
@@ -193,7 +232,9 @@
               </div>
             </div>
             <div class="col-4 col-lg-5 text-lg-end">
-              <div class="h-100 d-inline-flex align-items-center flex-wrap justify-content-end justify-content-lg-end gap-2 w-100 social">
+              <div
+                class="h-100 d-inline-flex align-items-center flex-wrap justify-content-end justify-content-lg-end gap-2 w-100 social"
+              >
                 <span class="text-body follow-label">Follow Us:</span>
                 <a
                   class="text-dark px-2 social-link"
@@ -336,8 +377,7 @@
           <div
             class="container-fluid hero-header-slide"
             style="background-image: url('../img/hero.jpg')"
-          >
-          </div>
+          ></div>
         </div>
       </div>
 
@@ -880,7 +920,17 @@
           <div class="testimonial-item">
             <div class="d-flex mb-3">
               <div class="position-relative">
-                <img src="img/testimonial-5.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;" class="img-fluid" alt="" />
+                <img
+                  src="img/testimonial-5.jpeg"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                  "
+                  class="img-fluid"
+                  alt=""
+                />
                 <div
                   class="btn-md-square bg-primary rounded-circle position-absolute"
                   style="top: 25px; left: -25px"
@@ -889,7 +939,9 @@
                 </div>
               </div>
               <div class="ps-3 my-auto text-end" dir="rtl">
-                <h5 class="mb-0">نواسۂ حضور حامیِ ملت مولانا مظفر حسین عسکری صاحب</h5>
+                <h5 class="mb-0">
+                  نواسۂ حضور حامیِ ملت مولانا مظفر حسین عسکری صاحب
+                </h5>
                 <p class="m-0">بوکارو، جھارکھنڈ</p>
               </div>
             </div>
@@ -902,14 +954,28 @@
                 <i class="fas fa-star text-primary"></i>
               </div>
               <p class="fs-5 m-0 pt-3 text-end">
-                میں سبیلِ حسین ٹرسٹ کی خدمات کو قابلِ تحسین سمجھتا ہوں۔ یہ ٹرسٹ تعلیم، خدمتِ خلق اور فلاحی میدان میں نمایاں کردار ادا کر رہا ہے۔ صدرِ ٹرسٹ مولانا عارف رضا قادری صاحب کی مثالی قیادت میں یہ ادارہ تیزی سے ترقی کر رہا ہے اور مجھے یقین ہے کہ مستقبل میں یہ ایک مضبوط اور مؤثر تنظیم کے طور پر اُبھرے گا۔
+                میں سبیلِ حسین ٹرسٹ کی خدمات کو قابلِ تحسین سمجھتا ہوں۔ یہ ٹرسٹ
+                تعلیم، خدمتِ خلق اور فلاحی میدان میں نمایاں کردار ادا کر رہا ہے۔
+                صدرِ ٹرسٹ مولانا عارف رضا قادری صاحب کی مثالی قیادت میں یہ ادارہ
+                تیزی سے ترقی کر رہا ہے اور مجھے یقین ہے کہ مستقبل میں یہ ایک
+                مضبوط اور مؤثر تنظیم کے طور پر اُبھرے گا۔
               </p>
             </div>
           </div>
           <div class="testimonial-item">
             <div class="d-flex mb-3">
               <div class="position-relative">
-                <img src="img/testimonial-3.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;" class="img-fluid" alt="" />
+                <img
+                  src="img/testimonial-3.jpeg"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                  "
+                  class="img-fluid"
+                  alt=""
+                />
                 <div
                   class="btn-md-square bg-primary rounded-circle position-absolute"
                   style="top: 25px; left: -25px"
@@ -931,14 +997,27 @@
                 <i class="fas fa-star text-primary"></i>
               </div>
               <p class="fs-5 m-0 pt-3 text-end">
-                نسبتِ حسین والے اس ٹرسٹ کا نام سن کر دل خوشی سے بھر گیا۔ آل انڈیا سبیلِ حسین ٹرسٹ واقعی خدمتِ خلق، تعلیم، اور سماجی بھلائی کا حسین امتزاج ہے۔ اللہ اس کارِ خیر کو مزید برکت اور کامیابی عطا فرمائے۔
+                نسبتِ حسین والے اس ٹرسٹ کا نام سن کر دل خوشی سے بھر گیا۔ آل
+                انڈیا سبیلِ حسین ٹرسٹ واقعی خدمتِ خلق، تعلیم، اور سماجی بھلائی
+                کا حسین امتزاج ہے۔ اللہ اس کارِ خیر کو مزید برکت اور کامیابی عطا
+                فرمائے۔
               </p>
             </div>
           </div>
           <div class="testimonial-item">
             <div class="d-flex mb-3">
               <div class="position-relative">
-                <img src="img/testimonial-2.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;" class="img-fluid" alt="" />
+                <img
+                  src="img/testimonial-2.jpeg"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                  "
+                  class="img-fluid"
+                  alt=""
+                />
                 <div
                   class="btn-md-square bg-primary rounded-circle position-absolute"
                   style="top: 25px; left: -25px"
@@ -960,14 +1039,25 @@
                 <i class="fas fa-star text-primary"></i>
               </div>
               <p class="fs-5 m-0 pt-3 text-end">
-                سبیل حسین ٹرسٹ کو یہ اعزاز حاصل ہے کہ اس نے آزادی کے بعد شہر دھنباد میں گستاخِ رسول کے خلاف سب سے پہلا ایف آئی آر درج کروایا۔
+                سبیل حسین ٹرسٹ کو یہ اعزاز حاصل ہے کہ اس نے آزادی کے بعد شہر
+                دھنباد میں گستاخِ رسول کے خلاف سب سے پہلا ایف آئی آر درج کروایا۔
               </p>
             </div>
           </div>
           <div class="testimonial-item">
             <div class="d-flex mb-3">
               <div class="position-relative">
-                <img src="img/testimonial-1.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;" class="img-fluid" alt="" />
+                <img
+                  src="img/testimonial-1.jpeg"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                  "
+                  class="img-fluid"
+                  alt=""
+                />
                 <div
                   class="btn-md-square bg-primary rounded-circle position-absolute"
                   style="top: 25px; left: -25px"
@@ -989,14 +1079,27 @@
                 <i class="fas fa-star text-primary"></i>
               </div>
               <p class="fs-5 m-0 pt-3 text-end">
-                میری دلی دعا ہے کہ آل انڈیا سبیل حسین ٹرسٹ حق، صداقت اور انسانیت کے جذبے پر قائم رہے، اور آنے والے وقتوں میں قوم و ملت کی بہتر خدمت انجام دے۔ ہر شخص کو آگے آکر اس تنظیم کا ساتھ دینا چاہیے، یہ وقت کی اہم ترین ضرورت ہے۔
+                میری دلی دعا ہے کہ آل انڈیا سبیل حسین ٹرسٹ حق، صداقت اور انسانیت
+                کے جذبے پر قائم رہے، اور آنے والے وقتوں میں قوم و ملت کی بہتر
+                خدمت انجام دے۔ ہر شخص کو آگے آکر اس تنظیم کا ساتھ دینا چاہیے، یہ
+                وقت کی اہم ترین ضرورت ہے۔
               </p>
             </div>
           </div>
           <div class="testimonial-item">
             <div class="d-flex mb-3">
               <div class="position-relative">
-                <img src="img/testimonial-6.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;" class="img-fluid" alt="" />
+                <img
+                  src="img/testimonial-6.jpeg"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                  "
+                  class="img-fluid"
+                  alt=""
+                />
                 <div
                   class="btn-md-square bg-primary rounded-circle position-absolute"
                   style="top: 25px; left: -25px"
@@ -1018,14 +1121,28 @@
                 <i class="fas fa-star text-primary"></i>
               </div>
               <p class="fs-5 m-0 pt-3 text-end">
-                حضرت مولانا عارف رضا قادری نے آل انڈیا سبیل حسین ٹرسٹ کی بنیاد رکھی اور اسے ایک منظم انداز میں آگے بڑھایا۔ ان کی قیادت نہ صرف قابلِ تعریف بلکہ دوسروں کے لیے ایک بہترین نمونہ بھی ہے۔ ان کے فیصلے ہمیشہ حکمت اور دور اندیشی پر مبنی ہوتے ہیں اور ان کی ٹیم کے ساتھ مل کر کام کرنے کا انداز ان کی اعلیٰ قیادت کا غماز ہے۔
+                حضرت مولانا عارف رضا قادری نے آل انڈیا سبیل حسین ٹرسٹ کی بنیاد
+                رکھی اور اسے ایک منظم انداز میں آگے بڑھایا۔ ان کی قیادت نہ صرف
+                قابلِ تعریف بلکہ دوسروں کے لیے ایک بہترین نمونہ بھی ہے۔ ان کے
+                فیصلے ہمیشہ حکمت اور دور اندیشی پر مبنی ہوتے ہیں اور ان کی ٹیم
+                کے ساتھ مل کر کام کرنے کا انداز ان کی اعلیٰ قیادت کا غماز ہے۔
               </p>
             </div>
           </div>
           <div class="testimonial-item">
             <div class="d-flex mb-3">
               <div class="position-relative">
-                <img src="img/testimonial-4.jpeg" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;" class="img-fluid" alt="" />
+                <img
+                  src="img/testimonial-4.jpeg"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                  "
+                  class="img-fluid"
+                  alt=""
+                />
                 <div
                   class="btn-md-square bg-primary rounded-circle position-absolute"
                   style="top: 25px; left: -25px"
@@ -1034,8 +1151,11 @@
                 </div>
               </div>
               <div class="ps-3 my-auto text-end" dir="rtl">
-                <h5 class="mb-0">ن حضور صوفی ہند، فاضل بغداد، حضرت علامہ مولانا سید</h5>
-                <p class="m-0">حسن عسکری ابن عربی اشرف اشرفی الجیلانی کچھوچھہ شریف</p>
+                <h5 class="mb-0">
+                  جانشین حضور محدثِ اعظم ہند، جانشین حضور صوفی ہند، فاضل بغداد،
+                  حضرت علامہ مولانا سید حسن عسکری ابن عربی اشرف اشرفی الجیلانی
+                </h5>
+                <p class="m-0">کچھوچھہ شریف</p>
               </div>
             </div>
             <div class="testimonial-content" dir="rtl">
@@ -1047,7 +1167,9 @@
                 <i class="fas fa-star text-primary"></i>
               </div>
               <p class="fs-5 m-0 pt-3 text-end">
-                نے یہ ارشاد فرمایا کہ اگر اللہ نے موقع عطا فرمایا اور دھنباد آنے کا شرف حاصل ہوا تو سبیل حسین ٹرسٹ کی خدمات کو قریب سے دیکھنے کی قلبی خواہش ہے
+                نے یہ ارشاد فرمایا کہ اگر اللہ نے موقع عطا فرمایا اور دھنباد آنے
+                کا شرف حاصل ہوا تو سبیل حسین ٹرسٹ کی خدمات کو قریب سے دیکھنے کی
+                قلبی خواہش ہے
               </p>
             </div>
           </div>
@@ -1294,7 +1416,10 @@
     </div>
 
     <!-- WhatsApp Button -->
-    <a href="https://whatsapp.com/channel/0029Va5brEpATRSoR55EUc2E" target="_blank" class="btn btn-success border-3 border-light whatsapp-button"
+    <a
+      href="https://whatsapp.com/channel/0029Va5brEpATRSoR55EUc2E"
+      target="_blank"
+      class="btn btn-success border-3 border-light whatsapp-button"
       ><i class="fab fa-whatsapp"></i
     ></a>
 
