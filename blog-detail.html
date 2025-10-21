@@ -13,35 +13,26 @@
       name="description"
     />
 
-    <!-- Open Graph base (will be updated dynamically after fetch) -->
+    <!-- Open Graph meta tags (will be populated by JavaScript for specific blogs) -->
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://aisht.in/blog-detail.html" />
-    <meta property="og:title" content="Latest Blog Posts - AISHT" />
-    <meta
-      property="og:description"
-      content="Read our latest blog posts and updates from All India Sabile Hussain Trust."
-    />
-    <meta property="og:image" content="https://aisht.in/img/hero.jpg" />
-    <meta property="og:image:secure_url" content="https://aisht.in/img/hero.jpg" />
+    <meta property="og:url" content="" id="og-url" />
+    <meta property="og:title" content="" id="og-title" />
+    <meta property="og:description" content="" id="og-description" />
+    <meta property="og:image" content="https://aisht.in/img/hero.jpg" id="og-image" />
+    <meta property="og:image:secure_url" content="https://aisht.in/img/hero.jpg" id="og-image-secure" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Latest Blog Posts - AISHT" />
-    <meta
-      property="og:site_name"
-      content="AISHT - All India Sabile Hussain Trust"
-    />
+    <meta property="og:image:alt" content="" id="og-image-alt" />
+    <meta property="og:site_name" content="AISHT - All India Sabile Hussain Trust" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://aisht.in/blog-detail.html" />
-    <meta property="twitter:title" content="Latest Blog Posts - AISHT" />
-    <meta
-      property="twitter:description"
-      content="Read our latest blog posts and updates from All India Sabile Hussain Trust."
-    />
-    <meta property="twitter:image" content="https://aisht.in/img/hero.jpg" />
-    <meta property="twitter:image:alt" content="Latest Blog Posts - AISHT" />
+    <meta property="twitter:url" content="" id="twitter-url" />
+    <meta property="twitter:title" content="" id="twitter-title" />
+    <meta property="twitter:description" content="" id="twitter-description" />
+    <meta property="twitter:image" content="https://aisht.in/img/hero.jpg" id="twitter-image" />
+    <meta property="twitter:image:alt" content="" id="twitter-image-alt" />
     <meta property="twitter:site" content="@Aisht1325" />
     <meta property="twitter:creator" content="@Aisht1325" />
 
@@ -82,6 +73,86 @@
     <link rel="icon" type="image/png" href="img/loader.png" />
     <link rel="shortcut icon" type="image/png" href="img/loader.png" />
     <link rel="apple-touch-icon" href="img/loader.png" />
+
+    <!-- Immediate meta tag update for social media crawlers -->
+    <script>
+      // This script runs immediately to update meta tags for social media crawlers
+      (function() {
+        function getUrlParameter(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+          var results = regex.exec(location.search);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function updateMetaTag(id, content) {
+          var element = document.getElementById(id);
+          if (element) {
+            element.setAttribute('content', content);
+          }
+        }
+
+        function updateMetaProperty(property, content) {
+          var element = document.querySelector('meta[property="' + property + '"]');
+          if (element) {
+            element.setAttribute('content', content);
+          }
+        }
+
+        function absoluteUrl(url) {
+          try {
+            return new URL(url, window.location.origin).href;
+          } catch {
+            return url;
+          }
+        }
+
+        // Get blog ID from URL
+        var blogId = getUrlParameter("id");
+        if (blogId) {
+          // Fetch blog data immediately
+          fetch('https://donation-website-s9mi.onrender.com/api/blog/get-blog/' + blogId)
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(data) {
+              if (data.success && data.blog) {
+                var blog = data.blog;
+                var pageUrl = window.location.href.split("#")[0];
+                var title = blog.title || "AISHT Blog";
+                var desc = (blog.metaDescription || blog.excerpt || blog.title || "").toString().slice(0, 160);
+                var rawImg = blog.bannerImage || "https://aisht.in/img/loader.png";
+                console.log("Blog banner image:", blog.bannerImage);
+                var img = absoluteUrl(rawImg);
+
+                // Update Open Graph tags
+                updateMetaTag('og-url', pageUrl);
+                updateMetaTag('og-title', title);
+                updateMetaTag('og-description', desc);
+                updateMetaTag('og-image', img);
+                updateMetaTag('og-image-secure', img);
+                updateMetaTag('og-image-alt', title);
+
+                // Update Twitter tags
+                updateMetaTag('twitter-url', pageUrl);
+                updateMetaTag('twitter-title', title);
+                updateMetaTag('twitter-description', desc);
+                updateMetaTag('twitter-image', img);
+                updateMetaTag('twitter-image-alt', title);
+
+                // Update page title
+                document.title = title + " - AISHT";
+
+                // Update description meta tag
+                updateMetaProperty('description', desc);
+              }
+            })
+            .catch(function(error) {
+              console.log('Error fetching blog data for meta tags:', error);
+            });
+        }
+      })();
+    </script>
 
     <style>
       /* Compact gadget */
