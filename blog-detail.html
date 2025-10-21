@@ -2,10 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Blog Detail - THEMosque</title>
+    <title>Blog Detail - AISHT</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="AISHT - All India Sabile Hussain Trust" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="" />
+    <meta property="twitter:title" content="" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="" />
+    
+    <!-- Additional meta tags -->
+    <meta name="author" content="AISHT - All India Sabile Hussain Trust" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -662,6 +684,37 @@
           });
       }
 
+      function updateMetaTags(blog) {
+        const currentUrl = window.location.href;
+        const siteName = "AISHT - All India Sabile Hussain Trust";
+        const siteUrl = "https://aisht.in";
+        
+        // Create description from blog content (first 160 characters)
+        const description = blog.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...';
+        
+        // Use blog banner image or fallback to logo
+        const imageUrl = blog.bannerImage || `${siteUrl}/img/logo-1.png`;
+        
+        // Update Open Graph tags
+        document.querySelector('meta[property="og:url"]').content = currentUrl;
+        document.querySelector('meta[property="og:title"]').content = `${blog.title} - ${siteName}`;
+        document.querySelector('meta[property="og:description"]').content = description;
+        document.querySelector('meta[property="og:image"]').content = imageUrl;
+        document.querySelector('meta[property="og:image:width"]').content = "1200";
+        document.querySelector('meta[property="og:image:height"]').content = "630";
+        
+        // Update Twitter tags
+        document.querySelector('meta[property="twitter:url"]').content = currentUrl;
+        document.querySelector('meta[property="twitter:title"]').content = `${blog.title} - ${siteName}`;
+        document.querySelector('meta[property="twitter:description"]').content = description;
+        document.querySelector('meta[property="twitter:image"]').content = imageUrl;
+        
+        // Update page title, description, and canonical URL
+        document.title = `${blog.title} - ${siteName}`;
+        document.querySelector('meta[name="description"]').content = description;
+        document.querySelector('link[rel="canonical"]').href = currentUrl;
+      }
+
       function displayBlogDetail(blog) {
         const container = document.getElementById("blog-detail-container");
         const blogDate = new Date(blog.createdAt);
@@ -716,7 +769,7 @@
 
                                   <div class="mt-5 pt-4 border-top">
                                       <h4 class="mb-3">Share this article</h4>
-                                      <div class="d-flex gap-2">
+                                      <div class="d-flex gap-2 flex-wrap">
                                           <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
                                             window.location.href
                                           )}"
@@ -727,7 +780,7 @@
                                           <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(
                                             window.location.href
                                           )}&text=${encodeURIComponent(
-          blog.title
+          blog.title + ' - AISHT'
         )}"
                                              target="_blank"
                                              class="btn btn-info text-white">
@@ -735,12 +788,19 @@
                                           </a>
                                           <a href="https://wa.me/?text=${encodeURIComponent(
                                             blog.title +
-                                              " - " +
+                                              " - AISHT - " +
                                               window.location.href
                                           )}"
                                              target="_blank"
                                              class="btn btn-success">
                                               <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                                          </a>
+                                          <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                                            window.location.href
+                                          )}"
+                                             target="_blank"
+                                             class="btn btn-primary" style="background-color: #0077b5;">
+                                              <i class="fab fa-linkedin-in me-2"></i>LinkedIn
                                           </a>
                                       </div>
                                   </div>
@@ -756,9 +816,11 @@
 
         container.innerHTML = blogHtml;
 
+        // Update meta tags for social media sharing
+        updateMetaTags(blog);
+
         // Update page title
         document.getElementById("page-title").textContent = blog.title;
-        document.title = `${blog.title} - THEMosque`;
 
         // Reinitialize WOW.js
         new WOW().init();
