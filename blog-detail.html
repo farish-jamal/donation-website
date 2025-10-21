@@ -5,29 +5,29 @@
     <title>Blog Detail - AISHT</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
-    <meta content="" name="description" />
+    <meta content="Read our latest blog posts from All India Sabile Hussain Trust" name="description" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
+    <meta property="og:url" content="https://aisht.in/blog-detail.html" />
+    <meta property="og:title" content="Blog Detail - AISHT" />
+    <meta property="og:description" content="Read our latest blog posts from All India Sabile Hussain Trust" />
+    <meta property="og:image" content="https://aisht.in/img/logo-1.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="AISHT - All India Sabile Hussain Trust" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="" />
-    <meta property="twitter:title" content="" />
-    <meta property="twitter:description" content="" />
-    <meta property="twitter:image" content="" />
+    <meta property="twitter:url" content="https://aisht.in/blog-detail.html" />
+    <meta property="twitter:title" content="Blog Detail - AISHT" />
+    <meta property="twitter:description" content="Read our latest blog posts from All India Sabile Hussain Trust" />
+    <meta property="twitter:image" content="https://aisht.in/img/logo-1.png" />
     
     <!-- Additional meta tags -->
     <meta name="author" content="AISHT - All India Sabile Hussain Trust" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="" />
+    <link rel="canonical" href="https://aisht.in/blog-detail.html" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -692,8 +692,15 @@
         // Create description from blog content (first 160 characters)
         const description = blog.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...';
         
-        // Use blog banner image or fallback to logo
-        const imageUrl = blog.bannerImage || `${siteUrl}/img/logo-1.png`;
+        // Ensure image URL is absolute
+        let imageUrl = blog.bannerImage;
+        if (imageUrl && !imageUrl.startsWith('http')) {
+          // If image URL is relative, make it absolute
+          imageUrl = imageUrl.startsWith('/') ? `${siteUrl}${imageUrl}` : `${siteUrl}/${imageUrl}`;
+        } else if (!imageUrl) {
+          // Fallback to logo
+          imageUrl = `${siteUrl}/img/logo-1.png`;
+        }
         
         // Update Open Graph tags
         document.querySelector('meta[property="og:url"]').content = currentUrl;
