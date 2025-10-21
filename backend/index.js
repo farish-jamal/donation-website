@@ -12,6 +12,7 @@ const { storage, fileFilter } = require("./config/multer/index");
 const { uploadSingleFile } = require("./utils/upload_single/index");
 const connectDB = require("./config/db");
 const Gallery = require("./models/gallery");
+const Video = require("./models/video");
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -480,6 +481,35 @@ app.post(
     }
   }
 );
+
+// Video Routes
+app.post("/api/video/create-video", async (req, res) => {
+  const { title, videoLink } = req.body;
+  const video = await Video.create({ title, videoLink });
+  res.status(201).json({
+    success: true,
+    message: "Video created successfully",
+    video,
+  });
+});
+
+app.get("/api/video/get-all-videos", async (req, res) => {
+  const videos = await Video.find();
+  res.status(200).json({
+    success: true,
+    message: "Videos fetched successfully",
+    videos,
+  });
+});
+
+app.delete("/api/video/delete-video/:id", async (req, res) => {
+  const { id } = req.params;
+  const video = await Video.findByIdAndDelete(id);
+  res.status(200).json({
+    success: true,
+    message: "Video deleted successfully",
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
