@@ -14,6 +14,7 @@ const connectDB = require("./config/db");
 const Gallery = require("./models/gallery");
 const Video = require("./models/video");
 const Department = require("./models/department");
+const Leadership = require("./models/leadership");
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -554,13 +555,94 @@ app.get("/api/department/get-department/:id", async (req, res) => {
 app.patch("/api/department/update-department/:id", async (req, res) => {
   const { id } = req.params;
   const { title, description } = req.body;
-  const department = await Department.findByIdAndUpdate(id, { title, description });
+  const department = await Department.findByIdAndUpdate(id, {
+    title,
+    description,
+  });
   res.status(200).json({
     success: true,
     message: "Department updated successfully",
     department,
   });
 });
+
+// Leadership Routes
+app.post(
+  "/api/leadership/create-leadership",
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      let image = "";
+      if (req.file) {
+        image = await uploadSingleFile(req.file.path, "leadership");
+      }
+      const leadership = await Leadership.create({ image });
+      res.status(201).json({
+        success: true,
+        message: "Leadership created successfully",
+        leadership,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+);
+
+app.get("/api/leadership/get-all-leadership", async (req, res) => {
+  const leadership = await Leadership.find();
+  res.status(200).json({
+    success: true,
+    message: "Leadership fetched successfully",
+    leadership,
+  });
+});
+
+app.delete("/api/leadership/delete-leadership/:id", async (req, res) => {
+  const { id } = req.params;
+  const leadership = await Leadership.findByIdAndDelete(id);
+  res.status(200).json({
+    success: true,
+    message: "Leadership deleted successfully",
+  });
+});
+
+app.get("/api/leadership/get-leadership/:id", async (req, res) => {
+  const { id } = req.params;
+  const leadership = await Leadership.findById(id);
+  res.status(200).json({
+    success: true,
+    message: "Leadership fetched successfully",
+    leadership,
+  });
+});
+
+app.patch(
+  "/api/leadership/update-leadership/:id",
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const { id } = req.params;
+      let image = "";
+      if (req.file) {
+        image = await uploadSingleFile(req.file.path, "leadership");
+      }
+      const leadership = await Leadership.findByIdAndUpdate(id, { image });
+      res.status(200).json({
+        success: true,
+        message: "Leadership updated successfully",
+        leadership,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
