@@ -519,6 +519,7 @@ app.post("/api/department/create-department", async (req, res) => {
   res.status(201).json({
     success: true,
     message: "Department created successfully",
+    department,
   });
 });
 
@@ -557,6 +558,7 @@ app.patch("/api/department/update-department/:id", async (req, res) => {
   res.status(200).json({
     success: true,
     message: "Department updated successfully",
+    department,
   });
 });
 
