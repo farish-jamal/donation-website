@@ -22,6 +22,7 @@
       content="Read our latest blog posts and updates from All India Sabile Hussain Trust."
     />
     <meta property="og:image" content="https://aisht.in/img/hero.jpg" />
+    <meta property="og:image:secure_url" content="https://aisht.in/img/hero.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Latest Blog Posts - AISHT" />
@@ -29,8 +30,9 @@
       property="og:site_name"
       content="AISHT - All India Sabile Hussain Trust"
     />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://aisht.in/blog-detail.html" />
     <meta property="twitter:title" content="Latest Blog Posts - AISHT" />
@@ -39,6 +41,9 @@
       content="Read our latest blog posts and updates from All India Sabile Hussain Trust."
     />
     <meta property="twitter:image" content="https://aisht.in/img/hero.jpg" />
+    <meta property="twitter:image:alt" content="Latest Blog Posts - AISHT" />
+    <meta property="twitter:site" content="@Aisht1325" />
+    <meta property="twitter:creator" content="@Aisht1325" />
 
     <!-- Robots / Canonical -->
     <meta name="author" content="AISHT - All India Sabile Hussain Trust" />
@@ -745,34 +750,45 @@
         const title = blog.title || "AISHT Blog";
         const desc = (blog.metaDescription || blog.excerpt || blog.title || "")
           .toString()
-          .slice(0, 200);
+          .slice(0, 160); // Reduced to 160 chars for better social media display
         const rawImg = blog.bannerImage || "https://aisht.in/img/hero.jpg";
         const img = absoluteUrl(rawImg);
+        
+        // Debug: Log the banner image being used
+        console.log("Blog banner image:", blog.bannerImage);
+        console.log("Processed image URL:", img);
 
         // Canonical
         setCanonical(pageUrl);
 
-        // Open Graph for WhatsApp and others
+        // Open Graph for WhatsApp, Facebook, LinkedIn and others
         upsertMeta("og:type", "article");
         upsertMeta("og:url", pageUrl);
         upsertMeta("og:title", title);
         upsertMeta("og:description", desc);
         upsertMeta("og:image", img);
         upsertMeta("og:image:secure_url", img);
-        // Square hints improve consistency on some apps
-        upsertMeta("og:image:width", "256");
-        upsertMeta("og:image:height", "256");
+        // Use recommended dimensions for social media (1200x630 for optimal display)
+        upsertMeta("og:image:width", "1200");
+        upsertMeta("og:image:height", "630");
         upsertMeta("og:image:alt", title);
+        upsertMeta("og:site_name", "AISHT - All India Sabile Hussain Trust");
+        upsertMeta("og:locale", "en_US");
 
-        // Twitter
+        // Twitter Card (enhanced for better previews)
         upsertMeta("twitter:card", "summary_large_image");
         upsertMeta("twitter:url", pageUrl);
         upsertMeta("twitter:title", title);
         upsertMeta("twitter:description", desc);
         upsertMeta("twitter:image", img);
+        upsertMeta("twitter:image:alt", title);
+        upsertMeta("twitter:site", "@Aisht1325");
+        upsertMeta("twitter:creator", "@Aisht1325");
 
-        // Generic description
+        // Additional meta tags for better SEO and social sharing
         upsertNameMeta("description", desc);
+        upsertNameMeta("author", blog.postBy || "AISHT");
+        upsertNameMeta("keywords", (blog.tags || []).join(", ") + ", AISHT, All India Sabile Hussain Trust");
 
         // Page title
         document.title = title + " - AISHT";
