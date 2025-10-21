@@ -2,29 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Blog Detail - AISHT</title>
+    <title>Latest Blog Posts - AISHT</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="keywords" />
-    <meta content="Read our latest blog posts from All India Sabile Hussain Trust" name="description" />
+    <meta content="blog, articles, updates, community, AISHT, All India Sabile Hussain Trust" name="keywords" />
+    <meta content="Read our latest blog posts and updates from All India Sabile Hussain Trust. Stay informed about our activities and community initiatives." name="description" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://aisht.in/blog-detail.html" />
-    <meta property="og:title" content="Blog Detail - AISHT" />
-    <meta property="og:description" content="Read our latest blog posts from All India Sabile Hussain Trust" />
+    <meta property="og:title" content="Latest Blog Posts - AISHT" />
+    <meta property="og:description" content="Read our latest blog posts and updates from All India Sabile Hussain Trust. Stay informed about our activities and community initiatives." />
     <meta property="og:image" content="https://aisht.in/img/hero.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Blog Detail - AISHT" />
+    <meta property="og:image:alt" content="Latest Blog Posts - AISHT" />
     <meta property="og:site_name" content="AISHT - All India Sabile Hussain Trust" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://aisht.in/blog-detail.html" />
-    <meta property="twitter:title" content="Blog Detail - AISHT" />
-    <meta property="twitter:description" content="Read our latest blog posts from All India Sabile Hussain Trust" />
+    <meta property="twitter:title" content="Latest Blog Posts - AISHT" />
+    <meta property="twitter:description" content="Read our latest blog posts and updates from All India Sabile Hussain Trust. Stay informed about our activities and community initiatives." />
     <meta property="twitter:image" content="https://aisht.in/img/hero.jpg" />
-    <meta property="twitter:image:alt" content="Blog Detail - AISHT" />
+    <meta property="twitter:image:alt" content="Latest Blog Posts - AISHT" />
     
     <!-- Additional meta tags -->
     <meta name="author" content="AISHT - All India Sabile Hussain Trust" />
@@ -675,8 +675,6 @@
           })
           .then((data) => {
             if (data.success && data.blog) {
-              // Update meta tags immediately when blog data is available
-              updateMetaTags(data.blog);
               displayBlogDetail(data.blog);
             } else {
               showBlogError("Blog not found");
@@ -688,49 +686,6 @@
           });
       }
 
-      function updateMetaTags(blog) {
-        const currentUrl = window.location.href;
-        const siteName = "AISHT - All India Sabile Hussain Trust";
-        const siteUrl = "https://aisht.in";
-        
-        // Create description from blog content (first 160 characters)
-        const description = blog.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...';
-        
-        // Ensure image URL is absolute
-        let imageUrl = blog.bannerImage;
-        console.log('Original banner image:', imageUrl);
-        
-        if (imageUrl && !imageUrl.startsWith('http')) {
-          // If image URL is relative, make it absolute
-          imageUrl = imageUrl.startsWith('/') ? `${siteUrl}${imageUrl}` : `${siteUrl}/${imageUrl}`;
-        } else if (!imageUrl) {
-          // Fallback to hero image instead of logo
-          imageUrl = `${siteUrl}/img/hero.jpg`;
-        }
-        
-        console.log('Final image URL:', imageUrl);
-        
-        // Update Open Graph tags
-        document.querySelector('meta[property="og:url"]').content = currentUrl;
-        document.querySelector('meta[property="og:title"]').content = `${blog.title} - ${siteName}`;
-        document.querySelector('meta[property="og:description"]').content = description;
-        document.querySelector('meta[property="og:image"]').content = imageUrl;
-        document.querySelector('meta[property="og:image:width"]').content = "1200";
-        document.querySelector('meta[property="og:image:height"]').content = "630";
-        document.querySelector('meta[property="og:image:alt"]').content = blog.title;
-        
-        // Update Twitter tags
-        document.querySelector('meta[property="twitter:url"]').content = currentUrl;
-        document.querySelector('meta[property="twitter:title"]').content = `${blog.title} - ${siteName}`;
-        document.querySelector('meta[property="twitter:description"]').content = description;
-        document.querySelector('meta[property="twitter:image"]').content = imageUrl;
-        document.querySelector('meta[property="twitter:image:alt"]').content = blog.title;
-        
-        // Update page title, description, and canonical URL
-        document.title = `${blog.title} - ${siteName}`;
-        document.querySelector('meta[name="description"]').content = description;
-        document.querySelector('link[rel="canonical"]').href = currentUrl;
-      }
 
       function displayBlogDetail(blog) {
         const container = document.getElementById("blog-detail-container");
