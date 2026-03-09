@@ -474,14 +474,12 @@
           </p>
         </div>
 
-        <!-- Payment QR Code Section -->
-        <div
-          class="row justify-content-center mb-5 wow fadeIn"
-          data-wow-delay="0.2s"
-        >
+        <!-- Payment Options Section -->
+        <div class="row g-4 mb-5 wow fadeIn" data-wow-delay="0.2s">
+          <!-- QR Code Payment -->
           <div class="col-lg-6">
             <div class="qr-section text-center">
-              <h3 class="mb-4">Scan to Pay</h3>
+              <h3 class="mb-4">Option 1: Scan to Pay</h3>
               <div class="qr-code-container mb-4">
                 <!-- Placeholder for QR Code - Replace with actual QR code image -->
                 <div class="qr-code-wrapper">
@@ -526,6 +524,56 @@
               </div>
             </div>
           </div>
+
+          <!-- Razorpay Payment -->
+          <div class="col-lg-6">
+            <div class="qr-section text-center">
+              <h3 class="mb-4">Option 2: Pay Online</h3>
+              <div class="mb-4">
+                <i class="fas fa-credit-card fa-5x text-primary mb-3"></i>
+                <p class="mb-3">Pay securely using UPI, Cards, Netbanking, or Wallets</p>
+              </div>
+              
+              <!-- Quick Amount Selection -->
+              <div class="mb-4">
+                <h5 class="mb-3">Select Amount:</h5>
+                <div class="d-flex flex-wrap gap-2 justify-content-center mb-3">
+                  <button class="btn btn-outline-primary amount-btn" data-amount="500">₹500</button>
+                  <button class="btn btn-outline-primary amount-btn" data-amount="1000">₹1000</button>
+                  <button class="btn btn-outline-primary amount-btn" data-amount="2000">₹2000</button>
+                  <button class="btn btn-outline-primary amount-btn" data-amount="5000">₹5000</button>
+                </div>
+                <div class="input-group mb-3" style="max-width: 300px; margin: 0 auto;">
+                  <span class="input-group-text">₹</span>
+                  <input type="number" class="form-control" id="customAmount" placeholder="Enter custom amount" min="1">
+                </div>
+              </div>
+              
+              <!-- Donor Details for Razorpay -->
+              <div class="mb-4">
+                <div class="row g-2">
+                  <div class="col-12">
+                    <input type="text" class="form-control" id="razorpayName" placeholder="Your Name" required>
+                  </div>
+                  <div class="col-12">
+                    <input type="email" class="form-control" id="razorpayEmail" placeholder="Your Email" required>
+                  </div>
+                  <div class="col-12">
+                    <input type="tel" class="form-control" id="razorpayPhone" placeholder="Your Phone" required>
+                  </div>
+                </div>
+              </div>
+              
+              <button id="razorpayBtn" class="btn btn-primary btn-lg px-4 py-3" disabled>
+                <i class="fas fa-credit-card me-2"></i>Pay with Razorpay
+              </button>
+              
+              <p class="text-muted mt-3 small">
+                <i class="fas fa-shield-alt me-1"></i>
+                Secure payment powered by Razorpay
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- Donation Form Section -->
@@ -535,8 +583,8 @@
         >
           <div class="col-lg-8">
             <div class="donation-form">
-              <h3 class="text-center mb-4">Submit Your Donation Details</h3>
-              <p class="text-center text-muted mb-4">
+              <h3 class="text-center mb-4">Donation Details</h3>
+              <p class="text-center text-muted mb-4" id="formDescription">
                 After making your payment, please fill out this form so we can
                 acknowledge your contribution and provide you with a receipt.
               </p>
@@ -963,6 +1011,8 @@
     <!-- Template Javascript -->
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
+    <!-- Razorpay Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
       // Minimal cookie helpers
       function setCookie(name, value, days) {
@@ -1027,6 +1077,258 @@
       }
 
       window.setLang = setLang;
+
+      // Lock the donation form after a successful submission to prevent duplicates
+      function lockDonationForm() {
+        const form = document.querySelector('.donation-form form');
+        if (!form) return;
+        // Disable all inputs, textareas, and the submit button
+        form.querySelectorAll('input, textarea, button').forEach(el => {
+          el.disabled = true;
+        });
+        // Show a notice above the button
+        const submitWrapper = form.querySelector('.col-12.text-center');
+        if (submitWrapper) {
+          submitWrapper.innerHTML = '<div class="alert alert-success mb-0"><i class="fas fa-check-circle me-2"></i>Donation already recorded. Thank you!</div>';
+        }
+      }
+
+      // Razorpay Integration
+      let selectedAmount = 0;
+      let paymentInProgress = false;
+
+      // Amount button handlers
+      document.addEventListener('DOMContentLoaded', function() {
+        const amountBtns = document.querySelectorAll('.amount-btn');
+        const customAmountInput = document.getElementById('customAmount');
+        const razorpayBtn = document.getElementById('razorpayBtn');
+        const nameInput = document.getElementById('razorpayName');
+        const emailInput = document.getElementById('razorpayEmail');
+        const phoneInput = document.getElementById('razorpayPhone');
+
+        // Amount button click handlers
+        amountBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            amountBtns.forEach(b => b.classList.remove('btn-primary'));
+            amountBtns.forEach(b => b.classList.add('btn-outline-primary'));
+            this.classList.remove('btn-outline-primary');
+            this.classList.add('btn-primary');
+            selectedAmount = parseInt(this.dataset.amount);
+            customAmountInput.value = '';
+            updateRazorpayButton();
+          });
+        });
+
+        // Custom amount input handler
+        customAmountInput.addEventListener('input', function() {
+          const amount = parseInt(this.value);
+          if (amount > 0) {
+            amountBtns.forEach(b => b.classList.remove('btn-primary'));
+            amountBtns.forEach(b => b.classList.add('btn-outline-primary'));
+            selectedAmount = amount;
+          } else {
+            selectedAmount = 0;
+          }
+          updateRazorpayButton();
+        });
+
+        // Update Razorpay button state
+        function updateRazorpayButton() {
+          const hasAmount = selectedAmount > 0;
+          const hasName = nameInput.value.trim().length > 0;
+          const hasEmail = emailInput.value.trim().length > 0;
+          const hasPhone = phoneInput.value.trim().length > 0;
+          
+          razorpayBtn.disabled = !(hasAmount && hasName && hasEmail && hasPhone);
+        }
+
+        // Input validation for Razorpay fields
+        [nameInput, emailInput, phoneInput].forEach(input => {
+          input.addEventListener('input', updateRazorpayButton);
+        });
+
+        // Razorpay payment handler
+        razorpayBtn.addEventListener('click', function() {
+          if (paymentInProgress) return;
+          
+          const name = nameInput.value.trim();
+          const email = emailInput.value.trim();
+          const phone = phoneInput.value.trim();
+          
+          if (!selectedAmount || selectedAmount <= 0) {
+            alert('Please select or enter a valid amount');
+            return;
+          }
+          
+          if (!name || !email || !phone) {
+            alert('Please fill in all required fields');
+            return;
+          }
+
+          // Email validation
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+          }
+
+          initiateRazorpayPayment(selectedAmount, name, email, phone);
+        });
+      });
+
+      // Initiate Razorpay Payment
+      async function initiateRazorpayPayment(amount, name, email, phone) {
+        paymentInProgress = true;
+        const razorpayBtn = document.getElementById('razorpayBtn');
+        const originalBtnText = razorpayBtn.innerHTML;
+        
+        try {
+          razorpayBtn.disabled = true;
+          razorpayBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Initiating Payment...';
+
+          // Create order via backend
+          const orderResponse = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.CREATE_ORDER), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              amount: amount,
+              currency: 'INR',
+              receipt: `donation_${Date.now()}`
+            })
+          });
+
+          const orderResult = await orderResponse.json();
+
+          if (!orderResponse.ok || !orderResult.success) {
+            throw new Error(orderResult.message || 'Failed to create payment order');
+          }
+
+          const order = orderResult.order;
+
+          // Razorpay options
+          const options = {
+            key: API_CONFIG.RAZORPAY.KEY_ID || '', // Use key from config
+            amount: order.amount,
+            currency: order.currency,
+            order_id: order.id,
+            name: 'All India Sabile Hussain Trust',
+            description: 'Donation to support our cause',
+            image: 'img/logo-1.png',
+            prefill: {
+              name: name,
+              email: email,
+              contact: phone
+            },
+            theme: {
+              color: '#3b82f6'
+            },
+            handler: async function(response) {
+              await handlePaymentSuccess(response, { name, email, phone, amount });
+            },
+            modal: {
+              ondismiss: function() {
+                paymentInProgress = false;
+                razorpayBtn.disabled = false;
+                razorpayBtn.innerHTML = originalBtnText;
+              }
+            }
+          };
+
+          const razorpay = new Razorpay(options);
+          razorpay.open();
+
+        } catch (error) {
+          console.error('Error initiating payment:', error);
+          alert('Failed to initiate payment: ' + error.message);
+          paymentInProgress = false;
+          razorpayBtn.disabled = false;
+          razorpayBtn.innerHTML = originalBtnText;
+        }
+      }
+
+      // Handle successful payment
+      async function handlePaymentSuccess(paymentResponse, donorDetails) {
+        try {
+          // Verify payment with backend
+          const verifyResponse = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_PAYMENT), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              razorpay_order_id: paymentResponse.razorpay_order_id,
+              razorpay_payment_id: paymentResponse.razorpay_payment_id,
+              razorpay_signature: paymentResponse.razorpay_signature
+            })
+          });
+
+          const verifyResult = await verifyResponse.json();
+
+          if (!verifyResponse.ok || !verifyResult.success) {
+            throw new Error('Payment verification failed');
+          }
+
+          // Auto-fill and submit donation form
+          await submitDonationToBackend({
+            name: donorDetails.name,
+            email: donorDetails.email,
+            phoneNumber: donorDetails.phone,
+            amount: donorDetails.amount,
+            UTRNumber: paymentResponse.razorpay_payment_id,
+            message: `Online payment via Razorpay. Order ID: ${paymentResponse.razorpay_order_id}`
+          });
+
+          // Update form description with success message
+          document.getElementById('formDescription').innerHTML = 
+            '<div class="alert alert-success"><i class="fas fa-check-circle me-2"></i>Payment successful! Your donation details have been saved. Thank you for your generosity!</div>';
+          
+          // Fill the form with payment details (read-only)
+          document.getElementById('donorName').value = donorDetails.name;
+          document.getElementById('donorEmail').value = donorDetails.email;
+          document.getElementById('donorPhone').value = donorDetails.phone;
+          document.getElementById('donorUTR').value = paymentResponse.razorpay_payment_id;
+          document.getElementById('donationAmount').value = donorDetails.amount;
+          document.getElementById('donorMessage').value = `Online payment via Razorpay. Order ID: ${paymentResponse.razorpay_order_id}`;
+
+          // Lock the entire donation form to prevent duplicate submissions
+          lockDonationForm();
+
+          // Scroll to form
+          document.querySelector('.donation-form').scrollIntoView({ behavior: 'smooth' });
+
+          alert(`Thank you ${donorDetails.name}! Your payment of ₹${donorDetails.amount} was successful. Payment ID: ${paymentResponse.razorpay_payment_id}`);
+
+        } catch (error) {
+          console.error('Error processing payment:', error);
+          alert('Payment was successful but there was an error saving your details. Please contact us with Payment ID: ' + paymentResponse.razorpay_payment_id);
+        } finally {
+          paymentInProgress = false;
+          const razorpayBtn = document.getElementById('razorpayBtn');
+          razorpayBtn.disabled = false;
+          razorpayBtn.innerHTML = '<i class="fas fa-credit-card me-2"></i>Pay with Razorpay';
+        }
+      }
+
+      // Submit donation to backend
+      async function submitDonationToBackend(donationData) {
+        const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.DONATION), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(donationData)
+        });
+
+        const result = await response.json();
+        
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Failed to save donation details');
+        }
+        
+        return result;
+      }
 
       // Donation Form submission handler with API integration
       document
@@ -1101,8 +1403,8 @@
                   "! We have received your details and will send you a receipt shortly via email."
               );
 
-              // Reset form
-              this.reset();
+              // Lock form to prevent duplicate submissions
+              lockDonationForm();
             } else {
               // Show error message
               alert(
