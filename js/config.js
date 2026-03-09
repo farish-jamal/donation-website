@@ -14,7 +14,7 @@ const API_CONFIG = {
     },
     // Razorpay Configuration
     RAZORPAY: {
-        KEY_ID: 'rzp_test_SDGyaJlMp5afY8' // Replace with your actual Razorpay key ID
+        KEY_ID: 'rzp_live_SPCczklkBhWEY6' // Replace with your actual Razorpay key ID
     }
 };
 
