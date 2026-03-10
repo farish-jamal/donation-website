@@ -1,7 +1,7 @@
 // API Configuration
 // Change this URL based on your environment
 const API_CONFIG = {
-    BASE_URL: 'http://localhost:5000', // For local development
+    BASE_URL: 'https://donation-website-s9mi.onrender.com', // For local development
     ENDPOINTS: {
         GALLERY: '/api/gallery/get-all-gallery-items',
         BLOG: '/api/blog/get-all-blogs',
