@@ -1390,7 +1390,6 @@
         const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
         const pageW = doc.internal.pageSize.getWidth();
         const pageH = doc.internal.pageSize.getHeight();
-        const blue=[13,110,253],dark=[30,30,30],gray=[100,100,100],ltGray=[245,246,248],green=[25,135,84],white=[255,255,255];
 
         const logoImg = new Image();
         logoImg.crossOrigin = 'Anonymous';
@@ -1399,65 +1398,146 @@
           canvas.width = logoImg.width; canvas.height = logoImg.height;
           canvas.getContext('2d').drawImage(logoImg, 0, 0);
           const logoBase64 = canvas.toDataURL('image/png');
-          doc.setFillColor(...blue); doc.rect(0,0,pageW,50,'F');
-          doc.addImage(logoBase64,'PNG',15,8,34,34);
-          doc.setTextColor(...white); doc.setFontSize(18); doc.setFont('helvetica','bold');
-          doc.text('All India Sabile Hussain Trust',55,17);
-          doc.setFontSize(8); doc.setFont('helvetica','normal');
-          doc.text('Ara More, Matkuria Rd, Wassepur, Dhanbad, Jharkhand 815301',55,25);
-          doc.text('allindiasabilehussaintrust@gmail.com   |   +91 8789833065',55,32);
-          doc.text('www.allindiasabilehussaintrust.org',55,39);
-          generatePDFContent(doc,data,pageW,pageH,blue,dark,gray,ltGray,green,white);
+          drawLetterheadHeader(doc, pageW, logoBase64);
+          generatePDFContent(doc, data, pageW, pageH);
         };
         logoImg.onerror = function() {
-          doc.setFillColor(...blue); doc.rect(0,0,pageW,50,'F');
-          doc.setTextColor(...white); doc.setFontSize(20); doc.setFont('helvetica','bold');
-          doc.text('All India Sabile Hussain Trust',pageW/2,18,{align:'center'});
-          doc.setFontSize(9); doc.setFont('helvetica','normal');
-          doc.text('Ara More, Matkuria Rd, Wassepur, Dhanbad, Jharkhand 815301',pageW/2,27,{align:'center'});
-          doc.text('allindiasabilehussaintrust@gmail.com   |   +91 8789833065',pageW/2,34,{align:'center'});
-          doc.text('www.allindiasabilehussaintrust.org',pageW/2,41,{align:'center'});
-          generatePDFContent(doc,data,pageW,pageH,blue,dark,gray,ltGray,green,white);
+          drawLetterheadHeader(doc, pageW, null);
+          generatePDFContent(doc, data, pageW, pageH);
         };
         logoImg.src = 'img/logo-1.png';
       }
 
-      function generatePDFContent(doc,data,pageW,pageH,blue,dark,gray,ltGray,green,white) {
-        doc.setFillColor(...ltGray); doc.rect(0,50,pageW,16,'F');
-        doc.setTextColor(...blue); doc.setFontSize(14); doc.setFont('helvetica','bold');
-        doc.text('DONATION RECEIPT',pageW/2,60,{align:'center'});
-        const receiptNo='AISHT-'+Date.now().toString().slice(-8);
-        doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(...gray);
-        doc.text('Receipt No: '+receiptNo,15,74);
-        doc.text('Date: '+data.date,pageW-15,74,{align:'right'});
-        doc.setDrawColor(...blue); doc.setLineWidth(0.4); doc.line(15,77,pageW-15,77);
-        doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(...dark);
-        doc.text('Donor Information',15,87);
-        doc.autoTable({startY:91,body:[['Full Name',data.name],['Email',data.email],['Phone',data.phone],['State / City',data.city]],columnStyles:{0:{cellWidth:42,fontStyle:'bold',fillColor:ltGray,textColor:dark},1:{textColor:dark}},styles:{fontSize:10,cellPadding:{top:3,bottom:3,left:4,right:4}},theme:'plain',margin:{left:15,right:15}});
-        const y1=doc.lastAutoTable.finalY+10;
-        doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(...dark);
-        doc.text('Donation Details',15,y1);
-        doc.autoTable({startY:y1+4,body:[['Category',data.category],['Amount','Rs. '+Number(data.amount).toLocaleString('en-IN')],['Intention',data.message||'—']],columnStyles:{0:{cellWidth:42,fontStyle:'bold',fillColor:ltGray,textColor:dark},1:{textColor:dark}},styles:{fontSize:10,cellPadding:{top:3,bottom:3,left:4,right:4}},theme:'plain',margin:{left:15,right:15}});
-        const y2=doc.lastAutoTable.finalY+10;
-        doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(...dark);
-        doc.text('Payment Details',15,y2);
-        doc.autoTable({startY:y2+4,body:[['Status','Successful'],['Payment ID',data.paymentId],['Order ID',data.orderId],['Method','Online (Razorpay)']],columnStyles:{0:{cellWidth:42,fontStyle:'bold',fillColor:ltGray,textColor:dark},1:{textColor:dark}},styles:{fontSize:10,cellPadding:{top:3,bottom:3,left:4,right:4}},theme:'plain',margin:{left:15,right:15}});
-        const y3=doc.lastAutoTable.finalY+12;
-        doc.setFillColor(...blue); doc.roundedRect(15,y3,pageW-30,24,4,4,'F');
-        doc.setTextColor(...white); doc.setFontSize(14); doc.setFont('helvetica','bold');
-        doc.text('Total Donated: Rs. '+Number(data.amount).toLocaleString('en-IN'),pageW/2,y3+11,{align:'center'});
-        doc.setFontSize(9); doc.setFont('helvetica','normal');
-        doc.text('May Allah accept your donation and reward you abundantly. Aameen.',pageW/2,y3+19,{align:'center'});
-        const y4=y3+32;
-        doc.setFillColor(236,253,243); doc.roundedRect(15,y4,pageW-30,22,3,3,'F');
-        doc.setDrawColor(...green); doc.setLineWidth(0.5); doc.roundedRect(15,y4,pageW-30,22,3,3,'S');
-        doc.setTextColor(...green); doc.setFontSize(12); doc.setFont('helvetica','bold');
-        doc.text('JazakAllah Khair — Thank you for your generous contribution!',pageW/2,y4+10,{align:'center'});
-        doc.setFontSize(8); doc.setFont('helvetica','normal');
-        doc.text('This is a computer-generated receipt and does not require a signature.',pageW/2,y4+17,{align:'center'});
-        doc.setDrawColor(...gray); doc.setLineWidth(0.3); doc.line(15,pageH-18,pageW-15,pageH-18);
-        doc.setTextColor(...gray); doc.setFontSize(8); doc.setFont('helvetica','normal');
-        doc.text('c 2024 All India Sabile Hussain Trust  |  Registered Charitable Trust  |  All Rights Reserved',pageW/2,pageH-11,{align:'center'});
+      function drawLetterheadHeader(doc, pageW, logoBase64) {
+        // ── White header background ───────────────────────────────────────────
+        doc.setFillColor(255,255,255); doc.rect(0,0,pageW,52,'F');
+
+        // Logo top-left
+        if (logoBase64) {
+          doc.addImage(logoBase64,'PNG',6,4,36,36);
+        }
+
+        // Contact info top-right
+        doc.setFontSize(14); doc.setFont('helvetica','bold'); doc.setTextColor(20,20,20);
+        doc.text('Mob : + 91 - 8789833065  Website: www.aisht.in',pageW-8,10,{align:'right'});
+        doc.setFont('helvetica','normal');
+        doc.text('Gmail  allindiasabilehussaintrust@gmail.com',pageW-8,17,{align:'right'});
+
+        // Trust name – Urdu (rendered as transliteration since jsPDF can't render Nastaliq)
+        doc.setFontSize(20); doc.setFont('helvetica','bold'); doc.setTextColor(20,20,20);
+        doc.text('ALL INDIA SABILE HUSSAIN TRUST',pageW/2,39,{align:'center'});
+
+        // ── Tricolor diagonal stripe (Indian flag: saffron / white / green) ──
+        // Each band is a parallelogram; the diagonal left edge goes from x=20 at top to x=0 at bottom
+        const _sY=41,_bH1=4,_bH2=3,_bH3=4,_tDx=20,_totH=_bH1+_bH2+_bH3;
+        const _dx1=_tDx*_bH1/_totH, _dx2=_tDx*_bH2/_totH;
+        const _x1=_tDx, _x2=_x1-_dx1, _x3=_x2-_dx2;
+        doc.setFillColor(255,153,51);
+        doc.lines([[pageW-_x1,0],[0,_bH1],[-(pageW-_x2),0]],_x1,_sY,[1,1],'F',true);
+        doc.setFillColor(255,255,255);
+        doc.lines([[pageW-_x2,0],[0,_bH2],[-(pageW-_x3),0]],_x2,_sY+_bH1,[1,1],'F',true);
+        doc.setFillColor(19,136,8);
+        doc.lines([[pageW-_x3,0],[0,_bH3],[-pageW,0]],_x3,_sY+_bH1+_bH2,[1,1],'F',true);
+      }
+
+      function generatePDFContent(doc, data, pageW, pageH) {
+        const black    = [20, 20, 20];
+        const midGray  = [100, 100, 100];
+        const ltGray   = [245, 245, 245];
+        const saffron  = [255, 153, 51];
+        const green    = [19, 136, 8];
+        const white    = [255, 255, 255];
+        const navy     = [26, 26, 80];
+
+        // ── Ref No / Date row (mimics letterhead) ───────────────────────────
+        const refY = 60;
+        doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(...midGray);
+        const receiptNo = 'AISHT-' + Date.now().toString().slice(-8);
+        doc.text('Ref. No. : ' + receiptNo, 12, refY);
+        doc.text('Date : ' + data.date, pageW - 12, refY, {align:'right'});
+
+        // Dotted underlines (mimic printed lines)
+        // doc.setDrawColor(...midGray); doc.setLineWidth(0.25);
+        // doc.setLineDashPattern([0.8,0.8],0);
+        // doc.line(35, refY+0.8, 95, refY+0.8);
+        // doc.line(pageW-55, refY+0.8, pageW-12, refY+0.8);
+        // doc.setLineDashPattern([],0);
+
+        // Thin separator line
+        doc.setDrawColor(200,200,200); doc.setLineWidth(0.3);
+        doc.line(12, refY+5, pageW-12, refY+5);
+
+        // ── DONATION RECEIPT label ───────────────────────────────────────────
+        doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(...navy);
+        doc.text('DONATION RECEIPT', pageW/2, refY+14, {align:'center'});
+        doc.setDrawColor(...saffron); doc.setLineWidth(0.5);
+        doc.line(pageW/2-28, refY+16, pageW/2+28, refY+16);
+
+        // ── Helper: section heading bar ──────────────────────────────────────
+        function sectionHead(label, y) {
+          doc.setFillColor(...saffron); doc.rect(12,y,pageW-24,6.5,'F');
+          doc.setTextColor(...white); doc.setFontSize(9.5); doc.setFont('helvetica','bold');
+          doc.text(label.toUpperCase(), 16, y+5);
+        }
+
+        // ── Donor Information ────────────────────────────────────────────────
+        const t1y = refY + 22;
+        sectionHead('Donor Information', t1y);
+        doc.autoTable({
+          startY: t1y + 7,
+          body: [['Full Name',data.name],['Email',data.email],['Phone',data.phone],['State / City',data.city]],
+          columnStyles: {0:{cellWidth:48,fontStyle:'bold',textColor:black,fillColor:[255,248,235]},1:{textColor:black}},
+          alternateRowStyles: {fillColor:ltGray},
+          styles: {fontSize:9.5, cellPadding:{top:3,bottom:3,left:5,right:5}, lineColor:[220,220,220], lineWidth:0.2},
+          theme:'grid', margin:{left:12,right:12}
+        });
+
+        // ── Donation Details ─────────────────────────────────────────────────
+        const t2y = doc.lastAutoTable.finalY + 8;
+        sectionHead('Donation Details', t2y);
+        doc.autoTable({
+          startY: t2y + 7,
+          body: [['Category',data.category],['Amount','Rs. '+Number(data.amount).toLocaleString('en-IN')],['Intention',data.message||'\u2014']],
+          columnStyles: {0:{cellWidth:48,fontStyle:'bold',textColor:black,fillColor:[255,248,235]},1:{textColor:black}},
+          alternateRowStyles: {fillColor:ltGray},
+          styles: {fontSize:9.5, cellPadding:{top:3,bottom:3,left:5,right:5}, lineColor:[220,220,220], lineWidth:0.2},
+          theme:'grid', margin:{left:12,right:12}
+        });
+
+        // ── Payment Details ──────────────────────────────────────────────────
+        const t3y = doc.lastAutoTable.finalY + 8;
+        sectionHead('Payment Details', t3y);
+        doc.autoTable({
+          startY: t3y + 7,
+          body: [['Status','Verified & Successful'],['Payment ID',data.paymentId],['Order ID',data.orderId],['Method','Online (Razorpay)']],
+          columnStyles: {0:{cellWidth:48,fontStyle:'bold',textColor:black,fillColor:[255,248,235]},1:{textColor:black}},
+          alternateRowStyles: {fillColor:ltGray},
+          styles: {fontSize:9.5, cellPadding:{top:3,bottom:3,left:5,right:5}, lineColor:[220,220,220], lineWidth:0.2},
+          theme:'grid', margin:{left:12,right:12}
+        });
+
+        // ── Total amount box (saffron border, cream fill) ────────────────────
+        const bY = doc.lastAutoTable.finalY + 10;
+        doc.setFillColor(255,248,225); doc.roundedRect(12,bY,pageW-24,26,3,3,'F');
+        doc.setDrawColor(...saffron); doc.setLineWidth(0.8); doc.roundedRect(12,bY,pageW-24,26,3,3,'S');
+        doc.setTextColor(...midGray); doc.setFontSize(8); doc.setFont('helvetica','normal');
+        doc.text('TOTAL AMOUNT DONATED', pageW/2, bY+8, {align:'center'});
+        doc.setTextColor(...navy); doc.setFontSize(17); doc.setFont('helvetica','bold');
+        doc.text('Rs. '+Number(data.amount).toLocaleString('en-IN'), pageW/2, bY+19, {align:'center'});
+
+        // ── JazakAllah Khair note ────────────────────────────────────────────
+        const jY = bY + 32;
+        doc.setFontSize(10); doc.setFont('helvetica','bolditalic'); doc.setTextColor(...green);
+        doc.text('JazakAllah Khair — May Allah accept your sadaqah. Aameen.', pageW/2, jY, {align:'center'});
+        doc.setFontSize(7.5); doc.setFont('helvetica','normal'); doc.setTextColor(...midGray);
+        doc.text('This is a computer-generated receipt and does not require a physical signature.', pageW/2, jY+6, {align:'center'});
+
+        // ── Footer: single dark strip with Urdu + English address (matches letterhead) ──
+        doc.setFillColor(30,30,30); doc.rect(0,pageH-16,pageW,16,'F');
+        doc.setTextColor(255,255,255); doc.setFontSize(7); doc.setFont('helvetica','bold');
+        doc.setFontSize(10); doc.setFont('helvetica','normal');
+        doc.text('Near Dhanbad City School, City Colony, Mohmmad Ali Road, Bye Pass, P.O. "B" Polytechnic, Dhanbad(Jharkhand) 828130',pageW/2,pageH-4,{align:'center'});
+
         doc.save('Donation_Receipt_'+data.paymentId+'.pdf');
       }
 
