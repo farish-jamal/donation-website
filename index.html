@@ -99,6 +99,116 @@
         color: white;
       }
 
+      /* Razorpay-style form fields fix */
+      .rzp-field {
+        flex: 1;
+        font-size: 13.5px;
+        color: #0f172a;
+        border: none !important;
+        border-bottom: 1.5px solid #d1d5db !important;
+        outline: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding: 2px 0 4px 0 !important;
+        border-radius: 0 !important;
+        width: 100%;
+        min-width: 0;
+        pointer-events: auto;
+        cursor: text;
+        transition: border-color 0.2s;
+      }
+      .rzp-field::placeholder {
+        color: #b0b8c9;
+        font-size: 13px;
+      }
+      .rzp-field:hover {
+        border-bottom-color: #2563eb !important;
+      }
+      .rzp-field:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-bottom: 2px solid #2563eb !important;
+        background: transparent !important;
+      }
+      .rzp-select {
+        flex: 1;
+        font-size: 13.5px;
+        color: #0f172a;
+        border: 1px solid #d1d5db !important;
+        border-radius: 4px !important;
+        padding: 7px 10px !important;
+        background: white !important;
+        cursor: pointer;
+        min-width: 0;
+        width: 100%;
+        pointer-events: auto;
+      }
+      .rzp-select:focus {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      /* Donation modal — mobile responsiveness */
+      @media (max-width: 991.98px) {
+        #donationModal .modal-dialog {
+          margin: 0.5rem !important;
+          max-width: calc(100% - 1rem) !important;
+        }
+        #donationModal .row.g-0 {
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        /* Remove per-panel max-height so they expand naturally when stacked */
+        #donationModal .col-lg-5,
+        #donationModal .col-lg-7 {
+          max-height: none !important;
+          overflow-y: visible !important;
+        }
+        #donationModal .col-lg-7 {
+          padding: 22px 16px 16px !important;
+        }
+        #donationModal .col-lg-5 {
+          padding: 22px 16px !important;
+        }
+      }
+      /* On very small screens, stack label above input */
+      @media (max-width: 480px) {
+        #donationModal .donation-form-row {
+          flex-direction: column;
+          align-items: flex-start !important;
+        }
+        #donationModal .donation-form-label {
+          width: auto !important;
+          min-width: auto !important;
+          margin-bottom: 4px;
+        }
+      }
+
+      /* Donate Floating Button */
+      .donate-floating-btn {
+        position: fixed;
+        bottom: 92px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        padding: 0;
+        border-width: 3px !important;
+      }
+
+      .donate-floating-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      }
+
       /* Loader improvements */
       #spinner .text-center {
         animation: fadeInUp 0.8s ease-out;
@@ -1391,6 +1501,182 @@
       </div>
     </div>
 
+    <!-- Donation Modal -->
+    <div class="modal fade" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width:920px;margin:1rem auto;">
+        <div class="modal-content border-0 rounded-3 overflow-hidden position-relative" style="box-shadow:0 20px 60px rgba(0,0,0,0.18);">
+          <!-- Close -->
+          <button type="button" class="btn-close position-absolute" data-bs-dismiss="modal" aria-label="Close" style="top:14px;right:14px;z-index:20;opacity:.45;"></button>
+
+          <div class="row g-0" style="max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+
+            <!-- ══════════ LEFT PANEL ══════════ -->
+            <div class="col-lg-5 order-2 order-lg-1" style="background:#f7f8fa;border-right:1px solid #e8ecf0;overflow-y:auto;max-height:92vh;padding:28px 22px;">
+
+              <!-- Brand -->
+              <div class="d-flex align-items-center mb-4 pb-4" style="border-bottom:1px solid #e2e8f0;">
+                <img src="img/logo-1.png" alt="AISHT" style="width:54px;height:54px;object-fit:contain;" class="me-3 flex-shrink-0">
+                <p class="mb-0 fw-bold" style="font-size:12.5px;line-height:1.4;color:#1a1a2e;letter-spacing:0.2px;">ALL INDIA SABILE HUSSAIN<br>TRUST</p>
+              </div>
+
+              <!-- Support Heading -->
+              <h5 class="fw-bold mb-2" style="font-size:18px;color:#0f172a;line-height:1.35;">Support All India Sabile Hussain Trust</h5>
+              <div style="width:38px;height:3px;background:#2563eb;border-radius:2px;margin-bottom:20px;"></div>
+
+              <!-- Note -->
+              <div class="mb-4">
+                <p class="fw-bold mb-2" style="font-size:13px;color:#0f172a;">Note &nbsp;:-</p>
+                <p class="mb-2" style="font-size:12.5px;color:#374151;line-height:1.55;"><strong>Zakat</strong> funds are used only for Shariah-compliant beneficiaries</p>
+                <p class="mb-0" style="font-size:12.5px;color:#374151;line-height:1.55;">Your donation may be used for any good, lawful religious, reformative, welfare, and charitable purposes</p>
+              </div>
+
+              <!-- Share -->
+              <div class="mb-4">
+                <p class="fw-bold mb-2" style="font-size:13px;color:#0f172a;">Share this on:</p>
+                <div class="d-flex gap-2">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://rzp.io/rzp/lQ7E4gpz" target="_blank" style="width:30px;height:30px;background:#1877F2;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;flex-shrink:0;"><i class="fab fa-facebook-f" style="font-size:13px;"></i></a>
+                  <a href="https://twitter.com/intent/tweet?url=https://rzp.io/rzp/lQ7E4gpz&text=Support+All+India+Sabile+Hussain+Trust" target="_blank" style="width:30px;height:30px;background:#0f0f0f;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;flex-shrink:0;"><i class="fab fa-twitter" style="font-size:12px;"></i></a>
+                  <a href="https://wa.me/?text=Support+All+India+Sabile+Hussain+Trust+https://rzp.io/rzp/lQ7E4gpz" target="_blank" style="width:30px;height:30px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;flex-shrink:0;"><i class="fab fa-whatsapp" style="font-size:14px;"></i></a>
+                </div>
+              </div>
+
+              <!-- Contact -->
+              <div class="mb-4">
+                <p class="fw-bold mb-2" style="font-size:13px;color:#0f172a;">Contact Us:</p>
+                <div class="d-flex align-items-center mb-1" style="font-size:12.5px;color:#374151;">
+                  <i class="fas fa-envelope me-2" style="color:#6b7280;font-size:11px;width:14px;"></i>allindiasabilehussaintrust@gmail.com
+                </div>
+                <div class="d-flex align-items-center" style="font-size:12.5px;color:#374151;">
+                  <i class="fas fa-phone me-2" style="color:#6b7280;font-size:11px;width:14px;"></i>+91 8789833065
+                </div>
+              </div>
+
+              <!-- Terms -->
+              <div>
+                <p class="fw-bold mb-2" style="font-size:13px;color:#0f172a;">Terms &amp; Conditions:</p>
+                <div style="font-size:11.5px;color:#6b7280;line-height:1.65;">
+                  <p class="mb-2"><strong style="color:#374151;">1. Nature of Contribution:</strong><br>All payments made through this portal are voluntary donations to All India Sabile Hussain Trust for charitable purposes. By proceeding, the donor confirms that the funds are from a legal and legitimate source.</p>
+                  <p class="mb-2"><strong style="color:#374151;">2. Refund Policy:</strong><br>Donations once made are non-refundable. In case of a technical error (e.g., double deduction), please contact us at <a href="mailto:allindiasabilehussaintrust@gmail.com" style="color:#2563eb;">allindiasabilehussaintrust@gmail.com</a> with proof of payment.</p>
+                  <p class="mb-2"><strong style="color:#374151;">3. Tax Benefits (80G):</strong><br>Donors wishing to claim tax benefits under Section 80G must provide a valid PAN Number and full address. The Trust will issue an automated receipt to the registered email.</p>
+                  <p class="mb-2"><strong style="color:#374151;">4. Utilization of Funds:</strong><br>The Trust reserves the right to utilize the collected funds for any of its welfare projects, including education, healthcare, or social relief, as per the Trust Deed.</p>
+                  <p class="mb-2"><strong style="color:#374151;">5. Data Privacy:</strong><br>Your personal information is collected solely for issuing receipts and maintaining donation records. We do not sell or share your data with third parties.</p>
+                  <p class="mb-0"><strong style="color:#374151;">6. Contact Us:</strong><br>Email: allindiasabilehussaintrust@gmail.com<br>Phone: +91 8789833065</p>
+                </div>
+              </div>
+
+              <!-- Agreement -->
+              <p class="mt-4 mb-0" style="font-size:10.5px;color:#9ca3af;line-height:1.5;border-top:1px solid #e2e8f0;padding-top:12px;">
+                You agree to share information entered on this page with ALL INDIA SABILE HUSSAIN TRUST (owner of this page) and Razorpay, adhering to applicable laws.
+              </p>
+            </div>
+
+            <!-- ══════════ RIGHT PANEL ══════════ -->
+            <div class="col-lg-7 bg-white d-flex flex-column order-1 order-lg-2" style="overflow-y:auto;max-height:92vh;padding:28px 28px 20px;">
+              <h5 class="fw-bold mb-1" style="font-size:17px;color:#0f172a;">Payment Details</h5>
+              <div style="width:36px;height:3px;background:#2563eb;border-radius:2px;margin-bottom:24px;"></div>
+
+              <form id="donationForm" novalidate class="flex-grow-1">
+
+                <!-- Name -->
+                <div class="d-flex align-items-center donation-form-row" style="padding:13px 0;border-bottom:1px solid #f1f5f9;">
+                  <div class="donation-form-label" style="width:110px;min-width:110px;font-size:13.5px;color:#6b7280;">Name</div>
+                  <input type="text" class="form-control rzp-field" id="donorName" placeholder="Enter your full name" required>
+                </div>
+
+                <!-- Email -->
+                <div class="d-flex align-items-center donation-form-row" style="padding:13px 0;border-bottom:1px solid #f1f5f9;">
+                  <div class="donation-form-label" style="width:110px;min-width:110px;font-size:13.5px;color:#6b7280;">Email ID</div>
+                  <input type="email" class="form-control rzp-field" id="donorEmail" placeholder="Enter your email address" required>
+                </div>
+
+                <!-- Phone -->
+                <div class="d-flex align-items-center donation-form-row" style="padding:13px 0;border-bottom:1px solid #f1f5f9;">
+                  <div class="donation-form-label" style="width:110px;min-width:110px;font-size:13.5px;color:#6b7280;">Phone Number</div>
+                  <input type="tel" class="form-control rzp-field" id="donorPhone" placeholder="Enter your phone number" required>
+                </div>
+
+                <!-- State / City -->
+                <div class="d-flex align-items-center donation-form-row" style="padding:13px 0;border-bottom:1px solid #f1f5f9;">
+                  <div class="donation-form-label" style="width:110px;min-width:110px;font-size:13.5px;color:#6b7280;">State or City</div>
+                  <input type="text" class="form-control rzp-field" id="donorCity" placeholder="Enter your state or city" required>
+                </div>
+
+                <!-- Donation Category -->
+                <div class="d-flex align-items-center donation-form-row" style="padding:13px 0;border-bottom:1px solid #f1f5f9;">
+                  <div class="donation-form-label" style="width:110px;min-width:110px;font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.6px;line-height:1.4;">DONATION<br>CATEGORIES</div>
+                  <select class="form-select rzp-select" id="donorCategory" required>
+                    <option value="" disabled>--Select--</option>
+                    <option value="Zakat" selected>Zakat</option>
+                    <option value="Fitra">Fitra</option>
+                    <option value="Sadaqah">Sadaqah</option>
+                    <option value="Sadaqah Jariyah">Sadaqah Jariyah</option>
+                    <option value="Kaffarah">Kaffarah</option>
+                    <option value="Fidya">Fidya</option>
+                    <option value="GENERAL DONATION">GENERAL DONATION</option>
+                  </select>
+                </div>
+
+                <!-- Message -->
+                <div class="d-flex align-items-start donation-form-row" style="padding:13px 0;border-bottom:1px solid #f1f5f9;">
+                  <div class="donation-form-label" style="width:110px;min-width:110px;font-size:13.5px;color:#6b7280;padding-top:2px;line-height:1.4;">Message or Intention<br><span style="font-size:11.5px;color:#9ca3af;">(Optional)</span></div>
+                  <input type="text" class="form-control rzp-field" id="donorMessage" placeholder="Enter your message or intention" style="margin-top:2px;">
+                </div>
+
+                <!-- Amount -->
+                <div class="d-flex align-items-center donation-form-row" style="padding:13px 0;border-bottom:1px solid #f1f5f9;">
+                  <div class="donation-form-label" style="width:110px;min-width:110px;font-size:13.5px;color:#6b7280;">Amount</div>
+                  <div style="display:flex;align-items:center;flex:1;">
+                    <span style="font-size:14px;color:#6b7280;margin-right:4px;">&#x20B9;</span>
+                    <input type="number" class="form-control rzp-field" id="donorAmount" placeholder="Enter Amount" min="1" required oninput="updatePayBtn()">
+                  </div>
+                </div>
+
+              </form>
+
+              <!-- Bottom bar: pay methods + Pay button -->
+              <div class="d-flex align-items-center justify-content-between" style="padding-top:18px;border-top:1px solid #f1f5f9;margin-top:auto;">
+
+                <!-- Payment method logos -->
+                <div class="d-flex align-items-center" style="gap:8px;">
+                  <!-- UPI -->
+                  <span style="font-size:8.5px;font-weight:800;color:#097939;font-style:italic;border:1.5px solid #097939;padding:2px 5px;border-radius:3px;letter-spacing:0.5px;line-height:1;">UPI</span>
+                  <!-- VISA -->
+                  <span style="font-size:13px;font-weight:900;color:#1a1f71;font-style:italic;font-family:'Arial Narrow',Arial,sans-serif;letter-spacing:-0.5px;">VISA</span>
+                  <!-- Mastercard -->
+                  <span style="position:relative;display:inline-block;width:30px;height:18px;vertical-align:middle;">
+                    <span style="position:absolute;left:0;top:1px;width:17px;height:17px;background:#eb001b;border-radius:50%;display:block;"></span>
+                    <span style="position:absolute;left:11px;top:1px;width:17px;height:17px;background:#f79e1b;border-radius:50%;display:block;"></span>
+                  </span>
+                  <!-- RuPay -->
+                  <span style="font-size:9px;font-weight:700;color:#007cc3;border:1.5px solid #007cc3;padding:2px 5px;border-radius:3px;letter-spacing:0.3px;line-height:1;">RuPay</span>
+                  <!-- Maestro styled -->
+                  <span style="position:relative;display:inline-block;width:28px;height:18px;vertical-align:middle;">
+                    <span style="position:absolute;left:0;top:1px;width:17px;height:17px;background:#009be1;border-radius:50%;display:block;"></span>
+                    <span style="position:absolute;left:9px;top:1px;width:17px;height:17px;background:#cc3333;border-radius:50%;display:block;opacity:0.9;"></span>
+                  </span>
+                </div>
+
+                <!-- Pay button -->
+                <button type="button" id="proceedPayBtn" onclick="initiateDonationPayment()" style="background:#2563eb;border:none;color:white;font-size:15px;font-weight:600;padding:11px 28px;border-radius:4px;cursor:pointer;white-space:nowrap;">
+                  Pay &#x20B9;&nbsp;<span id="payBtnAmount">0.00</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donate Floating Button -->
+    <button
+      type="button"
+      class="btn btn-primary border-3 border-light donate-floating-btn"
+      data-bs-toggle="modal"
+      data-bs-target="#donationModal"
+      title="Donate Now"
+    ><i class="fa fa-heart"></i></button>
+
     <!-- WhatsApp Button -->
     <a
       href="https://whatsapp.com/channel/0029Va5brEpATRSoR55EUc2E"
@@ -1488,5 +1774,346 @@
     </script>
 
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Razorpay Checkout SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <!-- jsPDF for invoice generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+    <script>
+      function setDonationAmount(amount) {
+        document.getElementById('donorAmount').value = amount;
+        updatePayBtn();
+      }
+
+      function updatePayBtn() {
+        var v = parseFloat(document.getElementById('donorAmount').value) || 0;
+        document.getElementById('payBtnAmount').textContent = v.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
+      }
+
+      function updateCategoryNote() { /* reserved for future dynamic notes */ }
+
+      async function initiateDonationPayment() {
+        const name     = document.getElementById('donorName').value.trim();
+        const email    = document.getElementById('donorEmail').value.trim();
+        const phone    = document.getElementById('donorPhone').value.trim();
+        const city     = document.getElementById('donorCity').value.trim();
+        const category = document.getElementById('donorCategory').value;
+        const message  = document.getElementById('donorMessage').value.trim();
+        const amount   = parseFloat(document.getElementById('donorAmount').value);
+
+        if (!name || !email || !phone || !city || !category || !amount || amount < 1) {
+          alert('Please fill in all required fields with a valid amount.');
+          return;
+        }
+
+        const btn = document.getElementById('proceedPayBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Creating order...';
+
+        try {
+          const orderRes = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.CREATE_ORDER), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ amount, currency: 'INR', receipt: 'donation_' + Date.now() })
+          });
+          const orderData = await orderRes.json();
+          if (!orderData.success) throw new Error(orderData.message || 'Failed to create order');
+
+          const order = orderData.order;
+
+          // Close the form modal
+          const modalEl = document.getElementById('donationModal');
+          const bsModal = bootstrap.Modal.getInstance(modalEl);
+          if (bsModal) bsModal.hide();
+
+          btn.disabled = false;
+          btn.innerHTML = 'Pay &#x20B9;&nbsp;<span id="payBtnAmount">0.00</span>'; updatePayBtn();
+
+          const options = {
+            key: API_CONFIG.RAZORPAY.KEY_ID,
+            amount: order.amount,
+            currency: order.currency,
+            name: 'All India Sabile Hussain Trust',
+            description: category + ' Donation',
+            order_id: order.id,
+            prefill: { name: name, email: email, contact: phone },
+            theme: { color: '#0d6efd' },
+            handler: async function(response) {
+              try {
+                // 1. Verify payment
+                const verifyRes = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_PAYMENT), {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_signature: response.razorpay_signature
+                  })
+                });
+                const verifyData = await verifyRes.json();
+                if (!verifyData.success) throw new Error('Payment verification failed');
+
+                // 2. Save donation to database
+                await fetch(getApiUrl(API_CONFIG.ENDPOINTS.DONATION), {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    phoneNumber: phone,
+                    amount: amount,
+                    message: '[' + category + '] ' + message,
+                    UTRNumber: response.razorpay_payment_id
+                  })
+                });
+
+                // 3. Generate and download PDF invoice
+                generateDonationInvoice({
+                  name: name,
+                  email: email,
+                  phone: phone,
+                  city: city,
+                  category: category,
+                  message: message,
+                  amount: amount,
+                  paymentId: response.razorpay_payment_id,
+                  orderId: response.razorpay_order_id,
+                  date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' })
+                });
+
+                alert('JazakAllah Khair! Your donation of Rs.' + amount.toLocaleString('en-IN') + ' has been received. Your receipt has been downloaded.');
+
+                // Reset form
+                document.getElementById('donationForm').reset();
+
+              } catch (err) {
+                console.error('Post-payment error:', err);
+                alert('Payment received! If receipt did not download, contact us with Payment ID: ' + response.razorpay_payment_id);
+              }
+            },
+            modal: {
+              ondismiss: function() {
+                btn.disabled = false;
+                btn.innerHTML = 'Pay &#x20B9;&nbsp;<span id="payBtnAmount">0.00</span>'; updatePayBtn();
+              }
+            }
+          };
+
+          const rzp = new Razorpay(options);
+          rzp.open();
+
+        } catch (err) {
+          console.error('Order creation error:', err);
+          alert('Error: ' + err.message);
+          btn.disabled = false;
+          btn.innerHTML = 'Pay &#x20B9;&nbsp;<span id="payBtnAmount">0.00</span>'; updatePayBtn();
+        }
+      }
+
+      function generateDonationInvoice(data) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+        const pageW = doc.internal.pageSize.getWidth();
+        const pageH = doc.internal.pageSize.getHeight();
+
+        const blue   = [13, 110, 253];
+        const dark   = [30, 30, 30];
+        const gray   = [100, 100, 100];
+        const ltGray = [245, 246, 248];
+        const green  = [25, 135, 84];
+        const white  = [255, 255, 255];
+
+        // ── Load logo and generate PDF ──────────────────────────────────────
+        const logoImg = new Image();
+        logoImg.crossOrigin = 'Anonymous';
+        logoImg.onload = function() {
+          // Create canvas to get base64
+          const canvas = document.createElement('canvas');
+          canvas.width = logoImg.width;
+          canvas.height = logoImg.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(logoImg, 0, 0);
+          const logoBase64 = canvas.toDataURL('image/png');
+
+          // ── Header band ─────────────────────────────────────────────────────
+          doc.setFillColor(...blue);
+          doc.rect(0, 0, pageW, 50, 'F');
+
+          // Add logo to header (left side)
+          doc.addImage(logoBase64, 'PNG', 15, 8, 34, 34);
+
+          doc.setTextColor(...white);
+          doc.setFontSize(18);
+          doc.setFont('helvetica', 'bold');
+          doc.text('All India Sabile Hussain Trust', 55, 17);
+
+          doc.setFontSize(8);
+          doc.setFont('helvetica', 'normal');
+          doc.text('Ara More, Matkuria Rd, Wassepur, Dhanbad, Jharkhand 815301', 55, 25);
+          doc.text('allindiasabilehussaintrust@gmail.com   |   +91 8789833065', 55, 32);
+          doc.text('www.allindiasabilehussaintrust.org', 55, 39);
+
+          generatePDFContent(doc, data, pageW, pageH, blue, dark, gray, ltGray, green, white);
+        };
+        logoImg.onerror = function() {
+          // Fallback: generate PDF without logo
+          // ── Header band ─────────────────────────────────────────────────────
+          doc.setFillColor(...blue);
+          doc.rect(0, 0, pageW, 50, 'F');
+
+          doc.setTextColor(...white);
+          doc.setFontSize(20);
+          doc.setFont('helvetica', 'bold');
+          doc.text('All India Sabile Hussain Trust', pageW / 2, 18, { align: 'center' });
+
+          doc.setFontSize(9);
+          doc.setFont('helvetica', 'normal');
+          doc.text('Ara More, Matkuria Rd, Wassepur, Dhanbad, Jharkhand 815301', pageW / 2, 27, { align: 'center' });
+          doc.text('allindiasabilehussaintrust@gmail.com   |   +91 8789833065', pageW / 2, 34, { align: 'center' });
+          doc.text('www.allindiasabilehussaintrust.org', pageW / 2, 41, { align: 'center' });
+
+          generatePDFContent(doc, data, pageW, pageH, blue, dark, gray, ltGray, green, white);
+        };
+        logoImg.src = 'img/logo-1.png';
+      }
+
+      function generatePDFContent(doc, data, pageW, pageH, blue, dark, gray, ltGray, green, white) {
+
+        // ── Receipt title strip ──────────────────────────────────────────────
+        doc.setFillColor(...ltGray);
+        doc.rect(0, 50, pageW, 16, 'F');
+        doc.setTextColor(...blue);
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text('DONATION RECEIPT', pageW / 2, 60, { align: 'center' });
+
+        // ── Receipt number & date ────────────────────────────────────────────
+        const receiptNo = 'AISHT-' + Date.now().toString().slice(-8);
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(...gray);
+        doc.text('Receipt No: ' + receiptNo, 15, 74);
+        doc.text('Date: ' + data.date, pageW - 15, 74, { align: 'right' });
+
+        doc.setDrawColor(...blue);
+        doc.setLineWidth(0.4);
+        doc.line(15, 77, pageW - 15, 77);
+
+        // ── Donor Information ────────────────────────────────────────────────
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(...dark);
+        doc.text('Donor Information', 15, 87);
+
+        doc.autoTable({
+          startY: 91,
+          body: [
+            ['Full Name',    data.name],
+            ['Email',        data.email],
+            ['Phone',        data.phone],
+            ['State / City', data.city]
+          ],
+          columnStyles: {
+            0: { cellWidth: 42, fontStyle: 'bold', fillColor: ltGray, textColor: dark },
+            1: { textColor: dark }
+          },
+          styles: { fontSize: 10, cellPadding: { top: 3, bottom: 3, left: 4, right: 4 } },
+          theme: 'plain',
+          margin: { left: 15, right: 15 }
+        });
+
+        // ── Donation Details ─────────────────────────────────────────────────
+        const y1 = doc.lastAutoTable.finalY + 10;
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(...dark);
+        doc.text('Donation Details', 15, y1);
+
+        doc.autoTable({
+          startY: y1 + 4,
+          body: [
+            ['Category',  data.category],
+            ['Amount',    'Rs. ' + Number(data.amount).toLocaleString('en-IN')],
+            ['Intention', data.message || '—']
+          ],
+          columnStyles: {
+            0: { cellWidth: 42, fontStyle: 'bold', fillColor: ltGray, textColor: dark },
+            1: { textColor: dark }
+          },
+          styles: { fontSize: 10, cellPadding: { top: 3, bottom: 3, left: 4, right: 4 } },
+          theme: 'plain',
+          margin: { left: 15, right: 15 }
+        });
+
+        // ── Payment Details ──────────────────────────────────────────────────
+        const y2 = doc.lastAutoTable.finalY + 10;
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(...dark);
+        doc.text('Payment Details', 15, y2);
+
+        doc.autoTable({
+          startY: y2 + 4,
+          body: [
+            ['Status',     'Successful'],
+            ['Payment ID', data.paymentId],
+            ['Order ID',   data.orderId],
+            ['Method',     'Online (Razorpay)']
+          ],
+          columnStyles: {
+            0: { cellWidth: 42, fontStyle: 'bold', fillColor: ltGray, textColor: dark },
+            1: { textColor: dark }
+          },
+          styles: { fontSize: 10, cellPadding: { top: 3, bottom: 3, left: 4, right: 4 } },
+          theme: 'plain',
+          margin: { left: 15, right: 15 }
+        });
+
+        // ── Amount highlight ─────────────────────────────────────────────────
+        const y3 = doc.lastAutoTable.finalY + 12;
+        doc.setFillColor(...blue);
+        doc.roundedRect(15, y3, pageW - 30, 24, 4, 4, 'F');
+        doc.setTextColor(...white);
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Total Donated: Rs. ' + Number(data.amount).toLocaleString('en-IN'), pageW / 2, y3 + 11, { align: 'center' });
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'normal');
+        doc.text('May Allah accept your donation and reward you abundantly. Aameen.', pageW / 2, y3 + 19, { align: 'center' });
+
+        // ── Thank you box ────────────────────────────────────────────────────
+        const y4 = y3 + 32;
+        doc.setFillColor(236, 253, 243);
+        doc.roundedRect(15, y4, pageW - 30, 22, 3, 3, 'F');
+        doc.setDrawColor(...green);
+        doc.setLineWidth(0.5);
+        doc.roundedRect(15, y4, pageW - 30, 22, 3, 3, 'S');
+        doc.setTextColor(...green);
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.text('JazakAllah Khair — Thank you for your generous contribution!', pageW / 2, y4 + 10, { align: 'center' });
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'normal');
+        doc.text('This is a computer-generated receipt and does not require a signature.', pageW / 2, y4 + 17, { align: 'center' });
+
+        // ── Footer ───────────────────────────────────────────────────────────
+        doc.setDrawColor(...gray);
+        doc.setLineWidth(0.3);
+        doc.line(15, pageH - 18, pageW - 15, pageH - 18);
+        doc.setTextColor(...gray);
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'normal');
+        doc.text(
+          'c 2024 All India Sabile Hussain Trust  |  Registered Charitable Trust  |  All Rights Reserved',
+          pageW / 2, pageH - 11, { align: 'center' }
+        );
+
+        doc.save('Donation_Receipt_' + data.paymentId + '.pdf');
+      }
+    </script>
   </body>
 </html>
